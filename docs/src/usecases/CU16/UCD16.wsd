@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+actor "Habitante y Cohabitante" as Habitante
+actor "Proveedor"
+
+rectangle "Gestionar Solicitud de Servicio Personalizado" {
+    usecase "Crear Servicio Personalizado" as cu1
+    usecase "Modificar Servicio Personalizado" as cu2
+    usecase "Eliminar Servicio Personalizado" as cu3
+    usecase "Consultar Servicio Personalizado" as cu4
+    usecase "Listar Servicio Personalizado" as cu5
+    usecase "Enviar Solicitud\nServicio Personalizado" as cu6 
+    usecase "Recibir Solicitud\nServicio Personalizado" as cu7
+    usecase "Recibir Actualizacion\nServicio Personalizado" as cu10
+    
+    usecase "Enviar a pool de servicios personalizado" as cu8
+    usecase "Modificar solicitud del pool" as cu9
+
+    usecase "Descripcion Incompleta" as cu11
+}
+
+Habitante --> cu1 : include
+Habitante --> cu2 : extend
+Habitante --> cu3 : extend
+Habitante --> cu4 : extend
+Habitante --> cu5 : include
+Habitante --> cu6 : include
+cu7 --> Proveedor : include
+cu8 --> cu7 : include
+cu10 --> Proveedor : include
+
+
+cu1 --> cu8 : include
+cu2 --> cu9 : include
+cu3 --> cu9 : include
+cu9 --> cu10 : include
+
+cu8 --> cu11 : extend
+cu9 --> cu11 : extend
+
+@enduml

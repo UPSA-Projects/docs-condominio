@@ -1,0 +1,69 @@
+@startuml
+
+title Gestionar Solicitud de Servicio Personalizado
+
+actor "Habitante y Cohabitante" as Habitante
+
+participant "Servicio Personalizado" as Servicio
+participant "Pool de Servicio\nPersonalizado" as Pool
+
+alt Flujos Basicos
+' CREAR
+    == Crear Solicitud de Servicio Personalizado ==
+    Habitante -> Servicio : crearSolicitudDeServicioPersonalizado()
+    activate Servicio
+    Servicio -> Pool : enviarSolicitudDeServicioPersonalizado()
+    deactivate Servicio
+    Pool -> Pool : publicarSolicitudDeServicioPersonalizado()
+    activate Pool
+    Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
+    deactivate Pool
+
+    ' QUERY
+    == Consultar Solicitud de Servicio Personalizado ==
+    Habitante -> Servicio : consultarSolicitudesDeServicioPersonalizado()
+    activate Servicio
+    Servicio -> Pool : consultarSolicitudesDeServicioPersonalizado()
+    deactivate Servicio
+    Pool --> Habitante : mostrarSolicitudesDeServicioPersonalizado()
+    deactivate Pool
+
+    Habitante -> Servicio : consultarSolicitudDeServicioPersonalizado()
+    activate Servicio
+    Servicio -> Pool : consultarSolicitudDeServicioPersonalizado()
+    deactivate Servicio
+    Pool --> Habitante : mostrarSolicitudDeServicioPersonalizado()
+    deactivate Pool
+
+
+
+    ' CAMINOS ALTERNATIVO
+    == Modificar Solicitud de Servicio Personalizado ==
+    alt Modificar Servicio Personalizado Solicitado
+        Habitante -> Servicio : modificarSolicitudDeServicioPersonalizado()
+        activate Servicio
+        Servicio -> Pool : actualizarSolicitudDeServicioPersonalizado()
+        deactivate Servicio
+        Pool -> Pool : publicarActualizacionSolicitudDeServicioPersonalizado()
+        activate Pool
+        Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
+        deactivate Pool
+    end
+
+    == Eliminar Solicitud de Servicio Personalizado ==
+    alt Eliminar Servicio Personalizado Solicitado
+        Habitante -> Servicio : eliminarSolicitudDeServicioPersonalizado()
+        activate Servicio
+        Servicio -> Pool : eliminarSolicitudDeServicioPersonalizado()
+        deactivate Servicio
+        Pool -> Pool : publicarEliminacionSolicitudDeServicioPersonalizado()
+        activate Pool
+        Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
+        deactivate Pool
+    end
+else Descripcion Incompleta
+    Servicio -> Habitante : errorDescripcionIncompleta()
+end
+
+
+@enduml
