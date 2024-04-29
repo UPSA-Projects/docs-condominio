@@ -4,8 +4,8 @@ title Gestionar Solicitud de Servicio Personalizado
 
 actor "Habitante y Cohabitante" as Habitante
 
-participant "Servicio Personalizado" as Servicio
-participant "Pool de Servicio\nPersonalizado" as Pool
+participant ":Servicio Personalizado" as Servicio
+participant ":Pool de Servicio\nPersonalizado" as Pool
 
 alt Flujos Basicos
 ' CREAR

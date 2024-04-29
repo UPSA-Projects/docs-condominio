@@ -1,0 +1,379 @@
+@startuml
+' 1
+' class Administrador {
+  ' {field} CI
+  ' {field} Correo
+  ' {field} Nombre
+  ' {field} Apellido
+  ' {field} Telefono
+  ' {field} + Direccion
+  ' {field} + Fecha de Nacimiento
+  ' {field} + Fecha de Registro
+' }
+
+class "Administrador Comunidad de Proveedores" {
+  {field} CI
+  {field} Correo
+  {field} Nombre
+  {field} Apellido
+  {field} Telefono
+  {field} Nombre de la comunidad
+  {field} Nombre del Condominio
+  {field} + Direccion
+  {field} + Fecha de Nacimiento
+  {field} + Fecha de Registro
+}
+
+' 9
+class "Administrador de conodminio" {
+  {field} CI
+  {field} Correo
+  {field} Nombre
+  {field} Apellido
+  {field} Telefono
+  {field} Nombre del condominio que administra
+  {field} + Direccion
+  {field} + Fecha de Nacimiento
+  {field} + Fecha de Registro
+}
+
+' 2
+class Condominio {
+  {field} Nombre del Condominio
+  {field} Ubicacion
+  {field} Cantidad de Casas (o departamentos)
+  {field} Fecha de Registro
+  {field} Descripcion
+  {field} Tamano
+  {field} Servicios : Object[]
+  {field} Areas Comunes : Object[]
+  {field} Areas de Juegos infantiles : Object[]
+  {field} Areas de Servicio Social : Object[]
+  {field} Cantidad de Areas verdes : Object[]
+  {field} Cantidad de Areas de estacionamiento : Object[]
+  {field} Equipamento : Object[]
+  {field} Reglamento : Object[]
+  {field} Observaciones y comentarios adicionales
+  {field} Pesonal de seguridad
+  {field} - Piscina
+  {field} - Cancha de futbol
+  {field} - Mantenimiento
+  {field} - Disponibilidad
+  {field} - Areas sociales
+  {field} - Disponibilidad
+}
+
+' 3
+class Proveedor {
+  {field} CI
+  {field} NIT
+  {field} Correo
+  {field} Nombre
+  {field} Apellido
+  {field} Telefono
+  {field} + Direccion
+  {field} + Fecha de Registro
+  {field} + Servicios : Object[]
+  {field} + Productos : Object[]
+  {field} + Tipo de Licencias : Object[]
+  {field} + Tipo de Certificados : Object[]
+  {field} Nombre de la empresa \nque representa : Object[]
+  {field} Comentarios
+  {field} Calificacion
+}
+
+' 4
+class "Empresa Proveedora" {
+  {field} NIT
+  {field} Correo empresarial
+  {field} Nombre de la empresa
+  {field} Direccion
+  {field} Telefono
+  {field} Fecha de Registro
+  {field} Tipo de Licencias : Object[]
+  {field} Tipo de Certificados : Object[]
+  {field} + Servicios : Object[]
+  {field} + Productos : Object[]
+  {field} + Proveedores : Object[]
+  {field} + Observaciones y comentarios adicionales
+  {field} Comentarios
+  {field} Calificacion
+}
+
+' 10
+class "Habitante y CoHabitante" {
+  {field} CI (propietario)
+  {field} Nombre (propietario)
+  {field} Apellido (propietario)
+  {field} Telefono (propietario)
+  {field} Correo (propietario)
+
+  {field} CI (titular)
+  {field} Nombre (titular)
+  {field} Apellido (titular)
+  {field} Telefono (titular)
+  {field} Correo (titular)
+
+  {field} CI (co-propietario)
+  {field} Nombre (co-propietario)
+  {field} Apellido (co-propietario)
+  {field} Telefono (co-propietario)
+  {field} Correo (co-propietario)
+
+  {field} Nombre de Condominio
+  {field} Numero de Casa / Departamento
+  {field} Numero Total de Personas
+  {field} Propio/Alquiler/Anticretico
+}
+
+' 5
+class "Tarifario de Membersia Condominio" {
+  {field} Nombre del condominio que administra
+  {field} "Membresia escogida" : Object[]
+  {field} Tarifario para membresía (monto)
+  {field} Tipo de pago : Object[]
+  {field} Monto de la membresía a pagar 
+  {field} + Fecha de Inicio
+  {field} + Fecha de Fin
+  {field} + Administrador de Condominios
+}
+
+' 6
+class "Tarifario de Membersia Empresa Proveeora y Proveedor" {
+  {field} Nombre de la empresa proveedora
+  {field} Tarifario para membresía (monto)
+  {field} Membresia escogida : Object[]
+  {field} Monto de la membresía a pagar 
+  {field} + Fecha de Inicio
+  {field} + Nombre del proveedor
+  {field} + Fecha de Fin
+  {field} + Nombre del proveedor Proveedor
+}
+
+' 7
+class "Tipo de Pago" {
+  {field} - Tipo de pago : Object[]
+  {field} Correo Electronico
+  {field} Pais
+  {field} Ciudad
+  {field} + Nombre de Administrador \nNombre de Proveedor
+}
+
+' 8
+class "Reporte de Pago de Membresia" {
+  {field} Número de Membresía
+  {field} Nombre del dueño de la Membresía
+  {field} - Fecha de pago
+  {field} Monto pagado
+  {field} Fecha de Reporte
+}
+
+' note top of  "Reporte de Pago de Membresia" : Deberia de haber esta clase en MD
+
+' note right of  "Reporte de Pago de Membresia" ::"Fecha de pago"
+'   Deberia estar esta informacion en Tarifario
+' end note
+
+' 11
+class "Solicitud Union a Comuniodad Proveedora" {
+  {field} Nombre de la empresa proveedora
+  {field} Nombres de los servicios : Object[]
+  {field} Rango de precio de los servicios
+  {field} Descripción de los servicios
+  {field} - Actividades esperadas : Object[]
+}
+
+' 12
+class "Respuesta de pertenencia \ndel proveedor al condominio"<administrador de condominio> {
+  {field} Nombre del proveedor
+  {field} Respuesta de pertenencia
+  {field} Fecha y Hora de Respuesta
+}
+
+' 13
+class "Solicitud de Servicio por Catalogo" {
+  {field} Fecha a llevarse a cabo
+}
+' 14
+class "Respuesta Solicitud de Servicio por Catalogo" {
+  {field} Fecha de respuesta
+}
+
+' 15
+class "Solicitud de servicio personalizado" {
+  {field} Id : Guid
+  {field} Nombre : string
+  {field} Descripcion : string
+  {field} Fecha de solicitud : date
+  {field} Fecha de inicio : date
+  {field} Hora de Inicio : date
+  {field} Fotos : bytes[]
+  {field} Estado : int
+  {method} CrearServicioPersonalizado(this)
+  {method} CancelarServicioPersonalizado(this.Id)
+  {method} ModificarServicioPersonalizado(this.Id)
+  {method} ConsultarServicioPersonalizado(this.Id)
+  {method} ConsultarServiciosPersonalizados()
+  {method} SeleccionarCategoriaDeServicio(CategoriaDeServicio)
+}
+' 16
+class "Respuesta de servicio personalizado" {
+  {field} Fecha de respuesta
+  {field} Precio
+  {field} Estado
+}
+
+' 18
+class "Reporte de evaluacion de desempeno por servicio"<administrador? Habitante> {
+
+}
+' 19
+class "Desvinculacion del sistama" {
+  {field} Correo del Usuario
+  {field} Nombre del Usuario
+  {field} Fecha de desvinculacion
+  {field} Motivo
+  {field} Confirmacion
+}
+
+' 20
+class "Catalogo de servicios" {
+  {field} Nombre 
+  {field} Descripcion
+  {field} Precio
+  {field} Fotos
+  {field} Tiempo Estimado
+  {field} Calificacines
+  {field} Comentarios
+  {field} Caracterizticas Adicionales
+}
+
+' E21
+class "Comunidad de proveedores" {
+  {field} Lista de Proveedores
+}
+
+' E23
+class Producto {
+  {field} Codigo de Barras 
+  {field} Nombre 
+  {field} Descripcion 
+  {field} Precio
+  {field} Stock 
+  {field} Comentarios 
+  {field} Fotos
+  {field} Calificaciones
+  {field} Tiempo de entrega
+  {field} Caracteristicas Adicionales
+}
+
+' E24
+class "Lista de Producto" {
+  {field} Fecha de Compra
+  {field} Cantidad
+}
+
+' E25
+class "Tarjeta de Credito" {
+  {field} Nombre del titular
+  {field} Numero de la tarjeta
+  {field} Fecha de Expiracion
+  {field} Codigo de seguridad (CVV/CVC/CID)
+}
+
+' E26
+class QR {
+  {field} Codigo QR
+  {field} Fecha de Expiracion
+}
+
+' E27
+class "Categoria de Servicios" {
+  {field} Nombre
+  {field} Descripcion
+}
+
+' E28
+class "Categoria de Productos" {
+  {field} Nombre
+  {field} Descripcion
+}
+
+' E29
+class "Pool Servicio Personalizado" {
+  {field} Lista de Servicios Personalizados
+}
+
+class "Pool Servicio Catalogo" {
+  {field} Lista de Servicios por Catalogo
+}
+
+class "Pool Producto" {
+  {field} Lista de Productos
+}
+
+' RELACIONES
+
+' FLUJO CONDOMINIO
+Condominio ||--o| "Administrador de conodminio" : "Administra" <
+Condominio ||--|| "Comunidad de proveedores" : "vincualdo a una" >
+
+
+' COMUNIDAD DE PROVEEDRES Y POOLS
+"Comunidad de proveedores" ||--|| "Pool Servicio Personalizado" : "tiene un" >
+"Comunidad de proveedores" ||--|| "Pool Servicio Catalogo" : "tiene un" >
+"Comunidad de proveedores" ||--|| "Pool Producto" : "tiene un" >
+
+' FLUJO DE SERVICIO PERSONALIZADO
+"Habitante y CoHabitante" ||--o{ "Solicitud de servicio personalizado" : "Solicita" >
+"Solicitud de servicio personalizado" ||--o{ "Categoria de Servicios" : "es de tipo" >
+"Solicitud de servicio personalizado" }o--|| "Pool Servicio Personalizado" : "Oferta" >
+"Respuesta de servicio personalizado" }o--|| "Habitante y CoHabitante" : Acepta <
+"Pool Servicio Personalizado" ||--o{ "Respuesta de servicio personalizado" : Responde >
+Proveedor ||--|{ "Categoria de Servicios" : "quiere ver" >
+
+' FLUJO DE SOLICITUD DE PRODUCTO
+Proveedor ||--o{ Producto : Tiene >
+Producto ||--o{ "Categoria de Productos" : "es de tipo" >
+Producto }o--|| "Pool Producto" : Oferta >
+"Pool Producto" ||---|{ "Lista de Producto" : "Toma" <
+"Lista de Producto" |o--|| "Habitante y CoHabitante" : "crea" <
+
+' FLUJO DE SOLICITUD DE SERVICIO POR CATALOGO
+Proveedor ||--o{ "Catalogo de servicios" : "crea" <
+"Catalogo de servicios" ||--|{ "Pool Servicio Catalogo" : "Oferta" >
+"Habitante y CoHabitante" ||--o{ "Solicitud de Servicio por Catalogo" : "Solicita" >
+"Solicitud de Servicio por Catalogo" }o--|| "Pool Servicio Catalogo" : "Oferta" >
+"Pool Servicio Catalogo" ||--o{ "Respuesta Solicitud de Servicio por Catalogo" : "Responde" >
+"Respuesta Solicitud de Servicio por Catalogo" }o--|| "Habitante y CoHabitante" : Acepta <
+
+' FLUJO DE SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
+"Administrador Comunidad de Proveedores" ||--|| "Comunidad de proveedores" : "administra" >
+Proveedor }|--|| "Empresa Proveedora" : "pertenece" > 
+Proveedor }|--|| "Solicitud Union a Comuniodad Proveedora" : "Solicita" >
+"Solicitud Union a Comuniodad Proveedora" }o--|| "Administrador Comunidad de Proveedores" : "Inspecciona" <
+"Administrador Comunidad de Proveedores" ||--o{ "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
+"Respuesta de pertenencia \ndel proveedor al condominio" |o--|| "Proveedor" : "Acepta" <
+Proveedor }o--o{ "Comunidad de proveedores" : "Pertenece" >
+
+' "Solicitud Union a Comuniodad Proveedora" -- "Comunidad de proveedores" : "Inspecciona" <
+' "Comunidad de proveedores" -- "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
+' "Respuesta de pertenencia \ndel proveedor al condominio" -- "Proveedor" : "Acepta" <
+' ' Proveedor -- "Comunidad de proveedores" : "Pertenece" >
+
+' FLUJO DE TARIFA
+"Administrador de conodminio" ||--o{ "Tarifario de Membersia Condominio" : "paga" >
+"Tarifario de Membersia Empresa Proveeora y Proveedor" ||--o{ "Proveedor" : "paga" >
+"Tipo de Pago" }|--|| "Tarifario de Membersia Condominio"
+"Tipo de Pago" }|--|| "Tarifario de Membersia Empresa Proveeora y Proveedor"
+"Tipo de Pago" ||--|| "Tarjeta de Credito"
+"Tipo de Pago" ||--|| QR
+' "Reporte de Pago de Membresia"
+
+' FLUJO DESVINCULACION DEL SISTEMA
+"Desvinculacion del sistama" ||--o{ "Administrador de conodminio" : "Desvincula" <
+"Desvinculacion del sistama" ||--o{ "Proveedor" : "Desvincula" <
+"Desvinculacion del sistama" ||--o{ "Habitante y CoHabitante" : "Desvincula" <
+
+@enduml
+

@@ -26,7 +26,7 @@
 ![Secuence Diagram](./docs/out/usecases/CU16/SD16/SD16.png)
 
 #### Diagrama de Colaboracion
-
+![Colaboration Diagram](./docs/out/usecases/CU16/CD16/CD16.png)
 #### Interfaz
 
 
@@ -34,3 +34,7 @@
 ![domain model](./docs/out/domain-model/domain-model/domain-model.png)
 
 ## Diagrama de Clases de Diseño
+
+![Design Class](./docs/out/design-class/design-class/design-class.png)
+
+## Diagrama de Paquetes
