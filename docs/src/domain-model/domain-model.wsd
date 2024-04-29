@@ -280,6 +280,18 @@ class "Categoria de Productos" {
   {field} Descripcion
 }
 
+' E29
+class "Pool Servicio Personalizado" {
+
+}
+
+class "Pool Servicio Catalogo" {
+
+}
+
+class "Pool Producto" {
+
+}
 
 ' RELACIONES
 
@@ -288,31 +300,38 @@ Condominio ||--o| "Administrador de conodminio" : "Administra" <
 Condominio ||--|| "Comunidad de proveedores" : "vincualdo a una" >
 
 
+' COMUNIDAD DE PROVEEDRES Y POOLS
+"Comunidad de proveedores" ||--|| "Pool Servicio Personalizado" : "tiene un" >
+"Comunidad de proveedores" ||--|| "Pool Servicio Catalogo" : "tiene un" >
+"Comunidad de proveedores" ||--|| "Pool Producto" : "tiene un" >
 
 ' FLUJO DE SERVICIO PERSONALIZADO
 "Habitante y CoHabitante" ||--o{ "Solicitud de servicio personalizado" : "Solicita" >
 "Solicitud de servicio personalizado" ||--o{ "Categoria de Servicios" : "es de tipo" >
-"Solicitud de servicio personalizado" }o--|| "Comunidad de proveedores" : "Oferta" >
+"Solicitud de servicio personalizado" }o--|| "Pool Servicio Personalizado" : "Oferta" >
 "Respuesta de servicio personalizado" }o--|| "Habitante y CoHabitante" : Acepta <
-"Comunidad de proveedores" ||--o{ "Respuesta de servicio personalizado" : Responde >
+"Pool Servicio Personalizado" ||--o{ "Respuesta de servicio personalizado" : Responde >
 Proveedor ||--|{ "Categoria de Servicios" : "quiere ver" >
 
-' SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
+' FLUJO DE SOLICITUD DE PRODUCTO
+Proveedor ||--o{ Producto : Tiene >
+Producto ||--o{ "Categoria de Productos" : "es de tipo" >
+Producto }o--|| "Pool Producto" : Oferta >
+"Pool Producto" ||---|{ "Lista de Producto" : "Toma" <
+"Lista de Producto" |o--|| "Habitante y CoHabitante" : "crea" <
+
+' FLUJO DE SOLICITUD DE SERVICIO POR CATALOGO
+"Habitante y CoHabitante" ||--o{ "Solicitud Seleccion por catalogo de servicio a comunidad de proveedores" : "Solicita" >
+"Solicitud Seleccion por catalogo de servicio a comunidad de proveedores" }o--|| "Pool Servicio Catalogo" : "Oferta" >
+
+' FLUJO DE SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
 Proveedor }|--|| "Empresa Proveedora" : "pertenece" > 
 Proveedor }|--|| "Solicitud Union a Comuniodad Proveedora" : "Solicita" >
 "Solicitud Union a Comuniodad Proveedora" -- "Comunidad de proveedores" : "Inspecciona" <
 "Comunidad de proveedores" -- "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
 "Respuesta de pertenencia \ndel proveedor al condominio" -- "Proveedor" : "Acepta" <
 
-' SOLICITUD DE PRODUCTO
-Proveedor ||--o{ Producto : Tiene >
-Producto ||--o{ "Categoria de Productos" : "es de tipo" >
-Producto }o--|| "Comunidad de proveedores" : Oferta >
-"Comunidad de proveedores" ||---|{ "Lista de Producto" : "Toma" <
-"Lista de Producto" |o--|| "Habitante y CoHabitante" : "crea" <
-
-
-' TARIFA
+' FLUJO DE TARIFA
 "Administrador de conodminio" ||--o{ "Tarifario de Membersia Condominio" : "paga" >
 "Tarifario de Membersia Empresa Proveeora y Proveedor" ||--o{ "Proveedor" : "paga" >
 "Tipo de Pago" -- "Tarifario de Membersia Condominio"
@@ -320,10 +339,6 @@ Producto }o--|| "Comunidad de proveedores" : Oferta >
 "Tipo de Pago" -- "Tarjeta de Credito"
 "Tipo de Pago" -- QR
 ' "Reporte de Pago de Membresia"
-
-' SOLICITUD DE SERVICIO POR CATALOGO
-"Habitante y CoHabitante" ||--o{ "Solicitud Seleccion por catalogo de servicio a comunidad de proveedores" : "Solicita" >
-"Solicitud Seleccion por catalogo de servicio a comunidad de proveedores" }o--|| "Comunidad de proveedores" : "Oferta" >
 
 
 @enduml
