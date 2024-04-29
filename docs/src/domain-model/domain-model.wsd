@@ -344,10 +344,10 @@ Proveedor ||--o{ "Catalogo de servicios" : "crea" <
 "Administrador Comunidad de Proveedores" ||--|| "Comunidad de proveedores" : "administra" >
 Proveedor }|--|| "Empresa Proveedora" : "pertenece" > 
 Proveedor }|--|| "Solicitud Union a Comuniodad Proveedora" : "Solicita" >
-"Solicitud Union a Comuniodad Proveedora" -- "Administrador Comunidad de Proveedores" : "Inspecciona" <
-"Administrador Comunidad de Proveedores" -- "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
-"Respuesta de pertenencia \ndel proveedor al condominio" -- "Proveedor" : "Acepta" <
-Proveedor -- "Comunidad de proveedores" : "Pertenece" >
+"Solicitud Union a Comuniodad Proveedora" }o--|| "Administrador Comunidad de Proveedores" : "Inspecciona" <
+"Administrador Comunidad de Proveedores" ||--o{ "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
+"Respuesta de pertenencia \ndel proveedor al condominio" |o--|| "Proveedor" : "Acepta" <
+Proveedor }o--o{ "Comunidad de proveedores" : "Pertenece" >
 
 ' "Solicitud Union a Comuniodad Proveedora" -- "Comunidad de proveedores" : "Inspecciona" <
 ' "Comunidad de proveedores" -- "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
