@@ -198,7 +198,7 @@ class "Solicitud de Servicio por Catalogo" {
 
 }
 ' 14
-class "Respuesta del servicio de seleccion por catalog" {
+class "Respuesta Solicitud de Servicio por Catalogo" {
 
 }
 
@@ -325,6 +325,8 @@ Proveedor ||--o{ "Catalogo de servicios" : "crea" <
 "Catalogo de servicios" ||--|{ "Pool Servicio Catalogo" : "Oferta" >
 "Habitante y CoHabitante" ||--o{ "Solicitud de Servicio por Catalogo" : "Solicita" >
 "Solicitud de Servicio por Catalogo" }o--|| "Pool Servicio Catalogo" : "Oferta" >
+"Pool Servicio Catalogo" ||--o{ "Respuesta Solicitud de Servicio por Catalogo" : "Responde" >
+"Respuesta Solicitud de Servicio por Catalogo" }o--|| "Habitante y CoHabitante" : Acepta <
 
 ' FLUJO DE SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
 Proveedor }|--|| "Empresa Proveedora" : "pertenece" > 
