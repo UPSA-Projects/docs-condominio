@@ -9,12 +9,20 @@
   ' {field} + Direccion
   ' {field} + Fecha de Nacimiento
   ' {field} + Fecha de Registro
-  ' {field} -  Nombre del condominio que administra
 ' }
 
-' note right of Administrador::"Nombre del condominio que administra"
-'   Este campo no deberia de estar
-' end note
+class "Administrador Comunidad de Proveedores" {
+  {field} CI
+  {field} Correo
+  {field} Nombre
+  {field} Apellido
+  {field} Telefono
+  {field} Nombre de la comunidad
+  {field} Nombre del Condominio
+  {field} + Direccion
+  {field} + Fecha de Nacimiento
+  {field} + Fecha de Registro
+}
 
 ' 9
 class "Administrador de conodminio" {
@@ -30,7 +38,7 @@ class "Administrador de conodminio" {
 }
 
 ' 2
-class Condominio<Administrador de conodminio> {
+class Condominio {
   {field} Nombre del Condominio
   {field} Ubicacion
   {field} Cantidad de Casas (o departamentos)
@@ -70,6 +78,8 @@ class Proveedor {
   {field} + Tipo de Licencias : Object[]
   {field} + Tipo de Certificados : Object[]
   {field} Nombre de la empresa \nque representa : Object[]
+  {field} Comentarios
+  {field} Calificacion
 }
 
 ' 4
@@ -86,10 +96,12 @@ class "Empresa Proveedora" {
   {field} + Productos : Object[]
   {field} + Proveedores : Object[]
   {field} + Observaciones y comentarios adicionales
+  {field} Comentarios
+  {field} Calificacion
 }
 
 ' 10
-class "Habitante y CoHabitante"<AdministradorCondomino> {
+class "Habitante y CoHabitante" {
   {field} CI (propietario)
   {field} Nombre (propietario)
   {field} Apellido (propietario)
@@ -115,7 +127,7 @@ class "Habitante y CoHabitante"<AdministradorCondomino> {
 }
 
 ' 5
-class "Tarifario de Membersia Condominio"<Condo ? Administrador de Condominios> {
+class "Tarifario de Membersia Condominio" {
   {field} Nombre del condominio que administra
   {field} "Membresia escogida" : Object[]
   {field} Tarifario para membresía (monto)
@@ -126,24 +138,11 @@ class "Tarifario de Membersia Condominio"<Condo ? Administrador de Condominios> 
   {field} + Administrador de Condominios
 }
 
-' note right of "Tarifario de Membersia Condominio" :: "Membresia escogida"
-'   Mejor tipo de membresia
-' end note
-
-' note right of "Tarifario de Membersia Condominio"::"Nombre del condominio que administra"
-'   Mejor Condominio
-' end note
-
-' note right of "Tarifario de Membersia Condominio"::"Tarifario para membresía (monto)"
-'   Mejor Pago
-' end note
-
 ' 6
 class "Tarifario de Membersia Empresa Proveeora y Proveedor" {
   {field} Nombre de la empresa proveedora
   {field} Tarifario para membresía (monto)
   {field} Membresia escogida : Object[]
-  {field} Tipo de pago : Object[]
   {field} Monto de la membresía a pagar 
   {field} + Fecha de Inicio
   {field} + Nombre del proveedor
@@ -159,8 +158,6 @@ class "Tipo de Pago" {
   {field} Ciudad
   {field} + Nombre de Administrador \nNombre de Proveedor
 }
-
-note top of "Tipo de Pago" : Este es tip de pago tarjeta, y los otros?
 
 ' 8
 class "Reporte de Pago de Membresia" {
@@ -195,11 +192,11 @@ class "Respuesta de pertenencia \ndel proveedor al condominio"<administrador de 
 
 ' 13
 class "Solicitud de Servicio por Catalogo" {
-
+  {field} Fecha a llevarse a cabo
 }
 ' 14
 class "Respuesta Solicitud de Servicio por Catalogo" {
-
+  {field} Fecha de respuesta
 }
 
 ' 15
@@ -224,28 +221,43 @@ class "Reporte de evaluacion de desempeno por servicio"<administrador? Habitante
 
 }
 ' 19
-class "Desvinculacion del sistama"<Habitante?Proveedor?Administrador?AdminCondo> {
-
+class "Desvinculacion del sistama" {
+  {field} Correo del Usuario
+  {field} Nombre del Usuario
+  {field} Fecha de desvinculacion
+  {field} Motivo
+  {field} Confirmacion
 }
 
 ' 20
 class "Catalogo de servicios" {
-
+  {field} Nombre 
+  {field} Descripcion
+  {field} Precio
+  {field} Fotos
+  {field} Tiempo Estimado
+  {field} Calificacines
+  {field} Comentarios
+  {field} Caracterizticas Adicionales
 }
 
 ' E21
 class "Comunidad de proveedores" {
-
+  {field} Lista de Proveedores
 }
 
 ' E23
 class Producto {
-  {field} Nombre 
-  {field} Precio
-  {field} Descripcion 
-  {field} Stock 
   {field} Codigo de Barras 
+  {field} Nombre 
+  {field} Descripcion 
+  {field} Precio
+  {field} Stock 
   {field} Comentarios 
+  {field} Fotos
+  {field} Calificaciones
+  {field} Tiempo de entrega
+  {field} Caracteristicas Adicionales
 }
 
 ' E24
@@ -282,15 +294,15 @@ class "Categoria de Productos" {
 
 ' E29
 class "Pool Servicio Personalizado" {
-
+  {field} Lista de Servicios Personalizados
 }
 
 class "Pool Servicio Catalogo" {
-
+  {field} Lista de Servicios por Catalogo
 }
 
 class "Pool Producto" {
-
+  {field} Lista de Productos
 }
 
 ' RELACIONES
@@ -329,21 +341,32 @@ Proveedor ||--o{ "Catalogo de servicios" : "crea" <
 "Respuesta Solicitud de Servicio por Catalogo" }o--|| "Habitante y CoHabitante" : Acepta <
 
 ' FLUJO DE SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
+"Administrador Comunidad de Proveedores" ||--|| "Comunidad de proveedores" : "administra" >
 Proveedor }|--|| "Empresa Proveedora" : "pertenece" > 
 Proveedor }|--|| "Solicitud Union a Comuniodad Proveedora" : "Solicita" >
-"Solicitud Union a Comuniodad Proveedora" -- "Comunidad de proveedores" : "Inspecciona" <
-"Comunidad de proveedores" -- "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
+"Solicitud Union a Comuniodad Proveedora" -- "Administrador Comunidad de Proveedores" : "Inspecciona" <
+"Administrador Comunidad de Proveedores" -- "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
 "Respuesta de pertenencia \ndel proveedor al condominio" -- "Proveedor" : "Acepta" <
+Proveedor -- "Comunidad de proveedores" : "Pertenece" >
+
+' "Solicitud Union a Comuniodad Proveedora" -- "Comunidad de proveedores" : "Inspecciona" <
+' "Comunidad de proveedores" -- "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
+' "Respuesta de pertenencia \ndel proveedor al condominio" -- "Proveedor" : "Acepta" <
+' ' Proveedor -- "Comunidad de proveedores" : "Pertenece" >
 
 ' FLUJO DE TARIFA
 "Administrador de conodminio" ||--o{ "Tarifario de Membersia Condominio" : "paga" >
 "Tarifario de Membersia Empresa Proveeora y Proveedor" ||--o{ "Proveedor" : "paga" >
-"Tipo de Pago" -- "Tarifario de Membersia Condominio"
-"Tipo de Pago" -- "Tarifario de Membersia Empresa Proveeora y Proveedor"
-"Tipo de Pago" -- "Tarjeta de Credito"
-"Tipo de Pago" -- QR
+"Tipo de Pago" }|--|| "Tarifario de Membersia Condominio"
+"Tipo de Pago" }|--|| "Tarifario de Membersia Empresa Proveeora y Proveedor"
+"Tipo de Pago" ||--|| "Tarjeta de Credito"
+"Tipo de Pago" ||--|| QR
 ' "Reporte de Pago de Membresia"
 
+' FLUJO DESVINCULACION DEL SISTEMA
+"Desvinculacion del sistama" ||--o{ "Administrador de conodminio" : "Desvincula" <
+"Desvinculacion del sistama" ||--o{ "Proveedor" : "Desvincula" <
+"Desvinculacion del sistama" ||--o{ "Habitante y CoHabitante" : "Desvincula" <
 
 @enduml
 
