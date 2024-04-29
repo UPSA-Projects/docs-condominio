@@ -178,7 +178,7 @@ class "Reporte de Pago de Membresia" {
 ' end note
 
 ' 11
-class "Solicitud Union a Comuniodad Proveedora"<proveedor> {
+class "Solicitud Union a Comuniodad Proveedora" {
   {field} Nombre de la empresa proveedora
   {field} Nombres de los servicios : Object[]
   {field} Rango de precio de los servicios
@@ -194,11 +194,11 @@ class "Respuesta de pertenencia \ndel proveedor al condominio"<administrador de 
 }
 
 ' 13
-class "Solicitud Seleccion por catalogo de servicio a comunidad de proveedores"<Habitante> {
+class "Solicitud de Servicio por Catalogo" {
 
 }
 ' 14
-class "Respuesta del servicio de seleccion por catalog"<proveedor> {
+class "Respuesta del servicio de seleccion por catalog" {
 
 }
 
@@ -213,7 +213,7 @@ class "Solicitud de servicio personalizado" {
   {field} Estado
 }
 ' 16
-class "Respuesta de servicio personalizado"<proveedor> {
+class "Respuesta de servicio personalizado" {
   {field} Fecha de respuesta
   {field} Precio
   {field} Estado
@@ -321,8 +321,10 @@ Producto }o--|| "Pool Producto" : Oferta >
 "Lista de Producto" |o--|| "Habitante y CoHabitante" : "crea" <
 
 ' FLUJO DE SOLICITUD DE SERVICIO POR CATALOGO
-"Habitante y CoHabitante" ||--o{ "Solicitud Seleccion por catalogo de servicio a comunidad de proveedores" : "Solicita" >
-"Solicitud Seleccion por catalogo de servicio a comunidad de proveedores" }o--|| "Pool Servicio Catalogo" : "Oferta" >
+Proveedor ||--o{ "Catalogo de servicios" : "crea" <
+"Catalogo de servicios" ||--|{ "Pool Servicio Catalogo" : "Oferta" >
+"Habitante y CoHabitante" ||--o{ "Solicitud de Servicio por Catalogo" : "Solicita" >
+"Solicitud de Servicio por Catalogo" }o--|| "Pool Servicio Catalogo" : "Oferta" >
 
 ' FLUJO DE SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
 Proveedor }|--|| "Empresa Proveedora" : "pertenece" > 
