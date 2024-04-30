@@ -1,33 +1,13 @@
 @startuml
 
-object "Habitante y Cohabitante" as Habitante
+object ":Habitante y Cohabitante" as Habitante
+object ":Servicio Personalizado" as Servicio
+object ":Categoria de Servicios" as Categoria
+object ":Pool de Servicio Personalizado" as Pool
 
-
-object ServicioPersonalizado
-
-object PoolServicioPersonalizado 
-
-Habitante -> ServicioPersonalizado : crearSolicitudDeServicioPersonalizado()
-
-ServicioPersonalizado -> PoolServicioPersonalizado : enviarSolicitudDeServicioPersonalizado()
-
-PoolServicioPersonalizado -> PoolServicioPersonalizado : publicarSolicitudDeServicioPersonalizado()
-
-PoolServicioPersonalizado --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
-
-
-Habitante -> ServicioPersonalizado : consultarSolicitudesDeServicioPersonalizado()
-
-ServicioPersonalizado -> PoolServicioPersonalizado : consultarSolicitudesDeServicioPersonalizado()
-
-PoolServicioPersonalizado --> Habitante : mostrarSolicitudesDeServicioPersonalizado()
-
-
-Habitante -> ServicioPersonalizado : consultarSolicitudDeServicioPersonalizado()
-
-ServicioPersonalizado -> PoolServicioPersonalizado : consultarSolicitudDeServicioPersonalizado()
-
-PoolServicioPersonalizado --> Habitante : mostrarSolicitudDeServicioPersonalizado()
-
+Habitante -- Categoria : obtenerCategoriasDeServicios() >
+Habitante -- Categoria : mostrarCategoriaDeServicios() <
+Habitante -- Servicio : crearSolicitudDeServicioPersonalizado(ServicioPersonalizado) >
+Servicio -- Pool : enviarSolicitudDeServicioPersonalizado(ServicioPersonalizado) > 
 
 @enduml

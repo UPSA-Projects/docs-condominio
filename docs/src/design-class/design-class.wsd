@@ -201,20 +201,22 @@ class "Respuesta Solicitud de Servicio por Catalogo" {
 
 ' 15
 class "Solicitud de servicio personalizado" {
-  {field} Id : Guid
-  {field} Nombre : string
-  {field} Descripcion : string
-  {field} Fecha de solicitud : date
-  {field} Fecha de inicio : date
-  {field} Hora de Inicio : date
-  {field} Fotos : bytes[]
-  {field} Estado : int
-  {method} CrearServicioPersonalizado(this)
-  {method} CancelarServicioPersonalizado(this.Id)
-  {method} ModificarServicioPersonalizado(this.Id)
-  {method} ConsultarServicioPersonalizado(this.Id)
-  {method} ConsultarServiciosPersonalizados()
-  {method} SeleccionarCategoriaDeServicio(CategoriaDeServicio)
+  {field} + Id : Guid
+  {field} + Nombre : string
+  {field} + Descripcion : string
+  {field} + Fecha de solicitud : date
+  {field} + Fecha de inicio : date
+  {field} + Hora de Inicio : date
+  {field} + Fotos : bytes[]
+  {field} + Estado : int
+  {field} - CategoriaDeServicio : CategoriaDeServicio
+  {field} - PoolServicioPersonalizo : [PoolServicioPersonalizado]
+  {method} + CrearServicioPersonalizado(this)
+  {method} + CancelarServicioPersonalizado(this.Id)
+  {method} + ModificarServicioPersonalizado(this.Id)
+  {method} + ConsultarServicioPersonalizado(this.Id)
+  {method} + ConsultarServiciosPersonalizados()
+  {method} + SeleccionarCategoriaDeServicio(CategoriaDeServicio)
 }
 ' 16
 class "Respuesta de servicio personalizado" {
@@ -289,8 +291,12 @@ class QR {
 
 ' E27
 class "Categoria de Servicios" {
-  {field} Nombre
-  {field} Descripcion
+  {field} + Nombre
+  {field} + Descripcion
+  {method} - CrearCategoriaDeServicio(this)
+  {method} - ModificarCategoriaDeServicio(this)
+  {method} + ConsultarCategoriasDeServicio()
+  {method} - EliminarCategoriaDeServicio(this)
 }
 
 ' E28

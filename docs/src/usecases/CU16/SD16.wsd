@@ -6,11 +6,19 @@ actor "Habitante y Cohabitante" as Habitante
 
 participant ":Servicio Personalizado" as Servicio
 participant ":Pool de Servicio\nPersonalizado" as Pool
+participant ":Catalogo de Servicios" as Catalogo
 
 alt Flujos Basicos
 ' CREAR
     == Crear Solicitud de Servicio Personalizado ==
-    Habitante -> Servicio : crearSolicitudDeServicioPersonalizado()
+    Habitante -> Catalogo : getCategoriaDeServicios()
+    activate Catalogo
+    Catalogo --> Habitante : mostrarCategoriaDeServicios()
+    deactivate Catalogo
+    activate Habitante
+    Habitante -> Habitante : SeleccionarCategoriaDeServicio(idCategoria)
+    deactivate Habitante
+    Habitante -> Servicio : crearSolicitudDeServicioPersonalizado(ServicioPersonalizado)
     activate Servicio
     Servicio -> Pool : enviarSolicitudDeServicioPersonalizado()
     deactivate Servicio
@@ -40,6 +48,13 @@ alt Flujos Basicos
     ' CAMINOS ALTERNATIVO
     == Modificar Solicitud de Servicio Personalizado ==
     alt Modificar Servicio Personalizado Solicitado
+        Habitante -> Catalogo : getCategoriaDeServicios()
+        activate Catalogo
+        Catalogo --> Habitante : mostrarCategoriaDeServicios()
+        deactivate Catalogo
+        activate Habitante
+        Habitante -> Habitante : SeleccionarCategoriaDeServicio(idCategoria)
+        deactivate Habitante
         Habitante -> Servicio : modificarSolicitudDeServicioPersonalizado()
         activate Servicio
         Servicio -> Pool : actualizarSolicitudDeServicioPersonalizado()
