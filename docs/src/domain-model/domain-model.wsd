@@ -102,23 +102,23 @@ class "Empresa Proveedora" {
 
 ' 10
 class "Habitante y CoHabitante" {
+  {field} CI (habitante)
+  {field} Nombre (habitante)
+  {field} Apellido (habitante)
+  {field} Telefono (habitante)
+  {field} Correo (habitante)
+
   {field} CI (propietario)
   {field} Nombre (propietario)
   {field} Apellido (propietario)
   {field} Telefono (propietario)
   {field} Correo (propietario)
 
-  {field} CI (titular)
-  {field} Nombre (titular)
-  {field} Apellido (titular)
-  {field} Telefono (titular)
-  {field} Correo (titular)
-
-  {field} CI (co-propietario)
-  {field} Nombre (co-propietario)
-  {field} Apellido (co-propietario)
-  {field} Telefono (co-propietario)
-  {field} Correo (co-propietario)
+  {field} CI (co-habitante)
+  {field} Nombre (co-habitante)
+  {field} Apellido (co-habitante)
+  {field} Telefono (co-habitante)
+  {field} Correo (co-habitante)
 
   {field} Nombre de Condominio
   {field} Numero de Casa / Departamento
@@ -160,13 +160,13 @@ class "Tipo de Pago" {
 }
 
 ' 8
-class "Reporte de Pago de Membresia" {
-  {field} Número de Membresía
-  {field} Nombre del dueño de la Membresía
-  {field} - Fecha de pago
-  {field} Monto pagado
-  {field} Fecha de Reporte
-}
+' class "Reporte de Pago de Membresia" {
+'   {field} Número de Membresía
+'   {field} Nombre del dueño de la Membresía
+'   {field} - Fecha de pago
+'   {field} Monto pagado
+'   {field} Fecha de Reporte
+' }
 
 ' note top of  "Reporte de Pago de Membresia" : Deberia de haber esta clase en MD
 
@@ -217,9 +217,9 @@ class "Respuesta de servicio personalizado" {
 }
 
 ' 18
-class "Reporte de evaluacion de desempeno por servicio"<administrador? Habitante> {
+' class "Reporte de evaluacion de desempeno por servicio"<administrador? Habitante> {
 
-}
+' }
 ' 19
 class "Desvinculacion del sistama" {
   {field} Correo del Usuario
@@ -342,7 +342,7 @@ Proveedor ||--o{ "Catalogo de servicios" : "crea" <
 
 ' FLUJO DE SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
 "Administrador Comunidad de Proveedores" ||--|| "Comunidad de proveedores" : "administra" >
-Proveedor }|--|| "Empresa Proveedora" : "pertenece" > 
+Proveedor }|--o| "Empresa Proveedora" : "pertenece" > 
 Proveedor }|--|| "Solicitud Union a Comuniodad Proveedora" : "Solicita" >
 "Solicitud Union a Comuniodad Proveedora" }o--|| "Administrador Comunidad de Proveedores" : "Inspecciona" <
 "Administrador Comunidad de Proveedores" ||--o{ "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
