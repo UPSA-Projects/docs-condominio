@@ -4,81 +4,72 @@ title Gestionar Solicitud de Servicio Personalizado
 
 actor "Habitante y Cohabitante" as Habitante
 
-participant ":Servicio Personalizado" as Servicio
-participant ":Pool de Servicio\nPersonalizado" as Pool
-participant ":Catalogo de Servicios" as Catalogo
+participant ":ServicioPersonalizado\nContronlador" as Controlador
+participant ":CategoriaDeServicios" as Categoria
+participant ":ServicioPersonalizado" as Servicio
+participant ":PoolDeServicio\nPersonalizado" as Pool
 
-alt Flujos Basicos
+' alt Flujos Basicos
 ' CREAR
     == Crear Solicitud de Servicio Personalizado ==
-    Habitante -> Catalogo : getCategoriaDeServicios()
-    activate Catalogo
-    Catalogo --> Habitante : mostrarCategoriaDeServicios()
-    deactivate Catalogo
-    activate Habitante
-    Habitante -> Habitante : SeleccionarCategoriaDeServicio(idCategoria)
-    deactivate Habitante
-    Habitante -> Servicio : crearSolicitudDeServicioPersonalizado(ServicioPersonalizado)
-    activate Servicio
-    Servicio -> Pool : enviarSolicitudDeServicioPersonalizado()
-    deactivate Servicio
-    Pool -> Pool : publicarSolicitudDeServicioPersonalizado()
-    activate Pool
+    Habitante -> Controlador : solicitarServicioPersonalizado(ServicioPersonalizado)
+    Controlador -> Categoria : obtenerCategoriaDeServicio(ServicioPersonalizado.idCategoria)
+    Controlador -> Servicio : realizarSolicitudDeServicioPersonalizado(ServicioPersonalizado)
+    Servicio -> Pool : crearSolicitudDeServicioPersonalizado(ServicioPersonalizado)
     Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
-    deactivate Pool
 
-    ' QUERY
-    == Consultar Solicitud de Servicio Personalizado ==
-    Habitante -> Servicio : consultarSolicitudesDeServicioPersonalizado()
-    activate Servicio
-    Servicio -> Pool : consultarSolicitudesDeServicioPersonalizado()
-    deactivate Servicio
-    Pool --> Habitante : mostrarSolicitudesDeServicioPersonalizado()
-    deactivate Pool
+    ' ' QUERY
+    ' == Consultar Solicitud de Servicio Personalizado ==
+    ' Habitante -> Servicio : consultarSolicitudesDeServicioPersonalizado()
+    ' activate Servicio
+    ' Servicio -> Pool : consultarSolicitudesDeServicioPersonalizado()
+    ' deactivate Servicio
+    ' Pool --> Habitante : mostrarSolicitudesDeServicioPersonalizado()
+    ' deactivate Pool
 
-    Habitante -> Servicio : consultarSolicitudDeServicioPersonalizado()
-    activate Servicio
-    Servicio -> Pool : consultarSolicitudDeServicioPersonalizado()
-    deactivate Servicio
-    Pool --> Habitante : mostrarSolicitudDeServicioPersonalizado()
-    deactivate Pool
-
+    ' Habitante -> Servicio : consultarSolicitudDeServicioPersonalizado()
+    ' activate Servicio
+    ' Servicio -> Pool : consultarSolicitudDeServicioPersonalizado()
+    ' deactivate Servicio
+    ' Pool --> Habitante : mostrarSolicitudDeServicioPersonalizado()
+    ' deactivate Pool
 
 
-    ' CAMINOS ALTERNATIVO
-    == Modificar Solicitud de Servicio Personalizado ==
-    alt Modificar Servicio Personalizado Solicitado
-        Habitante -> Catalogo : getCategoriaDeServicios()
-        activate Catalogo
-        Catalogo --> Habitante : mostrarCategoriaDeServicios()
-        deactivate Catalogo
-        activate Habitante
-        Habitante -> Habitante : SeleccionarCategoriaDeServicio(idCategoria)
-        deactivate Habitante
-        Habitante -> Servicio : modificarSolicitudDeServicioPersonalizado()
-        activate Servicio
-        Servicio -> Pool : actualizarSolicitudDeServicioPersonalizado()
-        deactivate Servicio
-        Pool -> Pool : publicarActualizacionSolicitudDeServicioPersonalizado()
-        activate Pool
-        Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
-        deactivate Pool
-    end
 
-    == Eliminar Solicitud de Servicio Personalizado ==
-    alt Eliminar Servicio Personalizado Solicitado
-        Habitante -> Servicio : eliminarSolicitudDeServicioPersonalizado()
-        activate Servicio
-        Servicio -> Pool : eliminarSolicitudDeServicioPersonalizado()
-        deactivate Servicio
-        Pool -> Pool : publicarEliminacionSolicitudDeServicioPersonalizado()
-        activate Pool
-        Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
-        deactivate Pool
-    end
-else Descripcion Incompleta
-    Servicio -> Habitante : errorDescripcionIncompleta()
-end
+    ' ' CAMINOS ALTERNATIVO
+    ' == Modificar Solicitud de Servicio Personalizado ==
+    ' alt Modificar Servicio Personalizado Solicitado
+    '     Habitante -> Categoria : getCategoriaDeServicios()
+    '     activate Categoria
+    '     Categoria --> Habitante : mostrarCategoriaDeServicios()
+    '     deactivate Categoria
+    '     activate Habitante
+    '     Habitante -> Habitante : SeleccionarCategoriaDeServicio(idCategoria)
+    '     deactivate Habitante
+    '     Habitante -> Servicio : modificarSolicitudDeServicioPersonalizado()
+    '     activate Servicio
+    '     Servicio -> Pool : actualizarSolicitudDeServicioPersonalizado()
+    '     deactivate Servicio
+    '     Pool -> Pool : publicarActualizacionSolicitudDeServicioPersonalizado()
+    '     activate Pool
+    '     Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
+    '     deactivate Pool
+    ' end
+
+    ' == Eliminar Solicitud de Servicio Personalizado ==
+    ' alt Eliminar Servicio Personalizado Solicitado
+    '     Habitante -> Servicio : eliminarSolicitudDeServicioPersonalizado()
+    '     activate Servicio
+    '     Servicio -> Pool : eliminarSolicitudDeServicioPersonalizado()
+    '     deactivate Servicio
+    '     Pool -> Pool : publicarEliminacionSolicitudDeServicioPersonalizado()
+    '     activate Pool
+    '     Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
+    '     deactivate Pool
+    ' end
+' else Descripcion Incompleta
+'     Servicio -> Habitante : errorDescripcionIncompleta()
+' end
 
 
 @enduml

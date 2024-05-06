@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+actor "Habitante Y Cohabitante" as Habitante
+
+rectangle "Gestionar Respuesta Solicitud de Servicio Personalizado" {
+    usecase "Obtener lista de respuesta" as cu1
+    usecase "Ver detalle de respuesta" as cu2
+    usecase "Descartar o Aceptar respuesta" as cu3
+
+    usecase "Cancelar agendado" as cu4
+
+}
+
+Habitante --> cu1 : <<include>>
+Habitante --> cu2 : <<include>>
+Habitante --> cu3 : <<include>>
+Habitante --> cu4 : <<extend>>
+
+
+
+@enduml

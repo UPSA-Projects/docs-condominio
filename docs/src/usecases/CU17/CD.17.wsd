@@ -1,0 +1,19 @@
+@startuml
+
+object ":Proveedor" as Proveedor
+object ":PoolDeServicioPersonalizado\nControlador" as Controlador
+object ":RespuestasDeServcioPersonalizado" as Respuesta
+object ":PoolDeServicios\nPersonalizados" as Pool
+
+
+Proveedor -> Controlador : responderSolicitudPersonalizado(id, price)
+
+Controlador -> Respuesta : crearRespuestaPersonalizado(id, price)
+
+Controlador -> Pool : retirarSolicitudPersonalizadoSelccionado(id)
+
+
+
+
+
+@enduml
