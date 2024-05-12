@@ -4,7 +4,7 @@
 [Casos de Uso](#casos-de-uso)
 
 Flujo Servicio Personalizado
-- [CU16: Gestionar Solicitud de Servicio Personalizado](#cu16-gestionar-solicitud-de-servicio-personalizad)
+- [CU16: Gestionar Solicitud de Servicio Personalizado](#cu16-gestionar-solicitud-de-servicio-personalizado)
 - [CU17: Gestionar y Responder a Solicitudes de Servicio Personalizado](#cu17-gestionar-y-responder-a-solicitudes-de-servicio-personalizado)
 - [CU18: Gestionar Respuesta Solicitud de Servicio Personalizado](#cu18-gestionar-respuesta-solicitud-de-servicio-personalizado)
 
@@ -65,11 +65,11 @@ Flujo Solicitud de Pertenencia
 - **Postcondicion:**  El sistema retira el servicio personalizado creado.    
 
 #### Diagrama de Secuencia
-![Secuence Diagram](docs\out\usecases\CU16\CO02\SD\SD.png)
+![Secuence Diagram](./docs/out/usecases/CU16/CO02/SD/SD.png)
 
 
 #### Diagrama de Colaboracion
-![Colaboration Diagram](docs\out\usecases\CU16\CO02\CD\CD.png)
+![Colaboration Diagram](./docs/out/usecases/CU16/CO02/CD/CD.png)
 
 ## CU17: Gestionar y Responder a Solicitudes de Servicio Personalizado
 **Actores:** Proveedor (p), Habitante y Cohabitante (s), Administrador de Condominio (s).
@@ -103,11 +103,11 @@ Flujo Solicitud de Pertenencia
 - **Postcondicion:** El sistema notifica de que se modifico exitosamente
 
 #### Diagrama de Secuencia
-![Secuence Diagram](docs\out\usecases\CU17\CO01\SD\SD.png)
+![Secuence Diagram](./docs/out/usecases/CU17/CO01/SD/SD.png)
 
 
 #### Diagrama de Colaboracion
-![Colaboration Diagram](docs\out\usecases\CU17\CO01\CD\CD.png)
+![Colaboration Diagram](./docs/out/usecases/CU17/CO01/CD/CD.png)
 
 
 ### CO2: Eliminar respuesta a solicitud de servicio personalizado
