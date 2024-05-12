@@ -1,0 +1,19 @@
+@startuml
+
+object ":HabitanteYCohabitante" as Habitante
+object ":ServicioPersonalizadoControlador" as Controlador
+object ":ServicioPersonalizado" as Servicio
+object ":PoolDeServicioPersonalizado" as Pool
+
+note top of Pool
+
+Pool es una lista de Servicio Personalizado
+
+end note
+
+
+Habitante -> Controlador : 1. removerServicioPersonalizado(ServicioPersonalizado.Id)
+Controlador -> Servicio : 2. eliminarSolicitudDeServicioPersonalizado(ServicioPersonalizado.Id)
+Servicio -> Pool : 3. eliminarServicioPersonalizado(ServicioPersonalizado.Id)
+
+@enduml

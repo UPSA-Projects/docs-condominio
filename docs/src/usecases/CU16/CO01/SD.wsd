@@ -1,0 +1,20 @@
+@startuml
+
+title Gestionar Solicitud de Servicio Personalizado
+
+actor "Habitante y Cohabitante" as Habitante
+
+participant ":ServicioPersonalizado\nContronlador" as Controlador
+participant ":CategoriaDeServicios" as Categoria
+participant ":ServicioPersonalizado" as Servicio
+collections ":PoolDeServicio\nPersonalizado" as Pool
+
+' CAMINOS ALTERNATIVO
+== Modificar Solicitud de Servicio Personalizado ==
+
+Habitante -> Controlador: hacerCambiosAlServicioPersonalizado(ServicioPersonalizado)
+Controlador -> Categoria: obtenerCategoriaDeServicio(ServicioPersonalizado.idCategoria)
+Controlador -> Servicio: modificarSolicitudDeServicioPersonalizado(ServicioPersonalizado)
+Servicio -> Pool: actualizarServicioPersonalizado(ServicioPersonalizado)
+Pool --> Habitante: confirmacionDeModificacionDeSolicitudDeServicioPersonalizado()
+@enduml

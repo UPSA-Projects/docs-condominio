@@ -1,0 +1,18 @@
+@startuml
+
+title Gestionar Solicitud de Servicio Personalizado
+
+actor "Habitante y Cohabitante" as Habitante
+
+participant ":ServicioPersonalizado\nContronlador" as Controlador
+participant ":ServicioPersonalizado" as Servicio
+collections ":PoolDeServicio\nPersonalizado" as Pool
+
+' CAMINOS ALTERNATIVO
+== Eliminar Solicitud de Servicio Personalizado ==
+
+Habitante -> Controlador: removerServicioPersonalizado(ServicioPersonalizado.Id)
+Controlador -> Servicio: eliminarSolicitudDeServicioPersonalizado(ServicioPersonalizado.Id)
+Servicio -> Pool: eliminarServicioPersonalizado(ServicioPersonalizado.Id)
+Pool --> Habitante: confirmacionDeEliminacionDeSolicitudDeServicioPersonalizado()
+@enduml

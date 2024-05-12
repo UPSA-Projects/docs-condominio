@@ -1,0 +1,21 @@
+@startuml
+
+object ":HabitanteYCohabitante" as Habitante
+object ":ServicioPersonalizadoControlador" as Controlador
+object ":ServicioPersonalizado" as Servicio
+object ":CategoriaDeServicios" as Categoria
+object ":PoolDeServicioPersonalizado" as Pool
+
+note top of Pool
+
+Pool es una lista de Servicio Personalizado
+
+end note
+
+
+Habitante -> Controlador : 1. hacerCambiosAlServicioPersonalizado(ServicioPersonalizado)
+Controlador -> Categoria : 2. obtenerCategoriaDeServicio(ServicioPersonalizado.idCategoria)
+Controlador -> Servicio : 3. modificarSolicitudDeServicioPersonalizado(ServicioPersonalizado)
+Servicio -> Pool : 4. actualizarSolicitudDeServicioPersonalizado(ServicioPersonalizado)
+
+@enduml
