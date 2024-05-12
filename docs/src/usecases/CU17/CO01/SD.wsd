@@ -1,0 +1,26 @@
+@startuml
+
+title Gestionar y Responder a Solicitudes de Servicio Personalizado
+
+actor Proveedor
+
+participant ":RespuestasDeServcioPersonalizado\nControlador" as Controlador
+participant ":RespuestasDeServcioPersonalizado" as Respuesta
+collections ":PoolDeRespuestasDeServicios\nPersonalizados" as PoolRespuesta
+
+
+== Modificar Respuesta a Solicitud de Servicio Personalizado ==
+activate Proveedor
+Proveedor -> Controlador : modificarRespuestaSolicitudPersonalizado(id, price)
+deactivate Proveedor
+activate Controlador
+Controlador -> Respuesta : modificar RespuestaPersonalizado(id, price)
+activate Respuesta
+deactivate Controlador
+Respuesta -> PoolRespuesta : modificarRespuestaCreada(respuesta)
+activate PoolRespuesta
+PoolRespuesta --> Proveedor : RespuestaModificada()
+deactivate PoolRespuesta
+deactivate Respuesta
+
+@enduml

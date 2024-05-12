@@ -1,0 +1,14 @@
+@startuml
+
+object "Habitante y Cohabitante" as Habitante
+object ":RespeustaSolicitudDe\nServicioPersonalizdo\nControlador" as Controlador
+object ":RespuestasDe\nServciosPersonalizado" as Respuesta
+object ":PoolDeServicios\nPersonalizados" as Pool
+
+Habitante -> Controlador : responderSolicitudPersonalizado(id, status)
+Controlador -> Respuesta : modificarRespuestaSolicitudPersonalizado(id, status)
+Respuesta -> Respuesta : removerRespuestaSolicitudPersonalizado(id)
+
+
+@enduml
+

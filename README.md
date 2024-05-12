@@ -96,17 +96,47 @@ Flujo Solicitud de Pertenencia
 ![Colaboration Diagram](./docs/out/usecases/CU17/CD17/CD17.png)
 
 
+### CO1: Modificar respuesta a solicitud de servicio personalizado
+- **Operacion:** modificarRespuestaSolicitudDeServicioPersonalizado()
+- **Referencia cruzadas:** CU17 Gestionar y Responder a Solicitudes de Servicio Personalizado
+- **Precondicion:** El proveedor selecciona la respuesta que desee modificar.
+- **Postcondicion:** El sistema notifica de que se modifico exitosamente
+
+#### Diagrama de Secuencia
+![Secuence Diagram](docs\out\usecases\CU17\CO01\SD\SD.png)
+
+
+#### Diagrama de Colaboracion
+![Colaboration Diagram](docs\out\usecases\CU17\CO01\CD\CD.png)
+
+
+### CO2: Eliminar respuesta a solicitud de servicio personalizado
+- **Operacion:** elimianarRespuestaSolicitudDeServicioPersonalizado()
+- **Referencia cruzadas:** CU17 Gestionar y Responder a Solicitudes de Servicio Personalizado
+- **Precondicion:** El proveedor selecciona la respuesta que desee elimianr.
+- **Postcondicion:** El sistema notifica de que se elimino exitosamente
+
+
+
+#### Diagrama de Secuencia
+![Secuence Diagram](./docs/out/usecases/CU17/CO02/SD/SD.png)
+
+
+#### Diagrama de Colaboracion
+![Colaboration Diagram](./docs/out/usecases/CU17/CO02/CD/CD.png)
+
+
 ## CU18: Gestionar Respuesta Solicitud de Servicio Personalizado
 **Actores:** Habitante (p), Administridor de Condominio (p), Proveedor (s)
 
 **Precondicion:** El habitante ha creado su solicitud de servicio personalizado y uno o varios proveedores de la comunidad han respondido a la solicitud.
 
-**Resumen:** El habitante o administrador del condominio accede a la lista de respuestas de sus solicitudes de servicio personalizado y evalúa cuál de ellas ofrece la mejor combinación entre calidad y precio. Pueden seleccionar entre descartar o aceptar una respuesta según sus preferencias.
+**Resumen:** El habitante o administrador del condominio accede a la lista de respuestas de sus solicitudes de servicio personalizado y evalúa cuál ofrece la mejor combinación entre calidad y precio. Pueden seleccionar entre descartar o aceptar una respuesta según sus preferencias.
 
-**Poscondicion:** El habitante acepta y todas las respuestas son removidas exeptuando la aceptada, ademas de retirar la solicitud de pool de servicios personalizados. El proveedor que realizo la respuesta es notificado.
+**Poscondicion:** El habitante acepta y todas las respuestas de la solicitud son removidas exeptuando la aceptada, ademas de retirar la solicitud de pool de servicios personalizados. El proveedor que realizo la respuesta es notificado.
 
 **Caminos Alternativos:**
-1.  **Cancelar solicitud:** El solicitante decide cancelar el servicio. El sistema notifica al proveedor.
+1.  **Cancelar agendado:** El solicitante decide cancelar el servicio. El sistema notifica al proveedor.
 2. **Respuesta inexistente:** La respuesta fue elimina. El sistema notifica al solicitante de ello. 
 3. **Ver detalla de respuesta:** El solicitante puede ver mas detalla sobre la respuesta.
 
