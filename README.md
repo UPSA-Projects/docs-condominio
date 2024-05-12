@@ -1,5 +1,22 @@
 # docs-condominio
 
+# Indice
+[Casos de Uso](#casos-de-uso)
+
+Flujo Servicio Personalizado
+- [CU16: Gestionar Solicitud de Servicio Personalizado](#cu16-gestionar-solicitud-de-servicio-personalizad)
+- [CU17: Gestionar Pool de Servicios Personalizados](#cu17-gestionar-pool-de-servicios-personalizados)
+- [CU18: Gestionar Respuesta Solicitud de Servicio Personalizado](#cu18-gestionar-respuesta-solicitud-de-servicio-personalizado)
+
+Flujo Productos
+
+Flujo Servicio por Catalogo
+
+Flujo Tarifa de Membresia
+
+Flujo Solicitud de Pertenencia
+
+
 # Casos de Uso
 ## CU16: Gestionar Solicitud de Servicio Personalizado
 

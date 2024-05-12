@@ -7,17 +7,17 @@ rectangle "Gestionar Pool de Servicios Personalizados" {
     usecase "Visualizar detalles de \nSolicitud de Servicio Personalizado" as cu2
     usecase "Crear respuesta a Solicitudes de \nServicios Personalizados" as cu3
 
-    usecase "Eliminar respuesta" as cu4
-    usecase "Modificar respuesta" as cu5
-    usecase "Ver todas sus respuestas" as cu6
+    usecase "Eliminar respuesta a Solicitudes de \nServicios Personalizados" as cu4
+    usecase "Modificar respuesta a Solicitudes de \nServicios Personalizados" as cu5
+    usecase "Ver todas sus respuestas de Solicitudes de \nServicios Personalizados" as cu6
 }
 
-Proveedor --> cu1
-Proveedor --> cu2
-Proveedor --> cu3
-Proveedor --> cu4
-Proveedor --> cu5
-Proveedor --> cu6
+Proveedor --> cu1 : <<include>>
+Proveedor --> cu2 : <<extend>>
+Proveedor --> cu3 : <<include>>
+Proveedor --> cu4 : <<extend>>
+Proveedor --> cu5 : <<extend>>
+Proveedor --> cu6 : <<include>>
 
 
 @enduml
