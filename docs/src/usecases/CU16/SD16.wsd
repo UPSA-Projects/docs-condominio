@@ -41,28 +41,6 @@ collections ":PoolDeServicio\nPersonalizado" as Pool
     ' Pool --> Habitante : mostrarSolicitudDeServicioPersonalizado()
     ' deactivate Pool
 
-
-
-    ' ' CAMINOS ALTERNATIVO
-    ' == Modificar Solicitud de Servicio Personalizado ==
-    ' alt Modificar Servicio Personalizado Solicitado
-    '     Habitante -> Categoria : getCategoriaDeServicios()
-    '     activate Categoria
-    '     Categoria --> Habitante : mostrarCategoriaDeServicios()
-    '     deactivate Categoria
-    '     activate Habitante
-    '     Habitante -> Habitante : SeleccionarCategoriaDeServicio(idCategoria)
-    '     deactivate Habitante
-    '     Habitante -> Servicio : modificarSolicitudDeServicioPersonalizado()
-    '     activate Servicio
-    '     Servicio -> Pool : actualizarSolicitudDeServicioPersonalizado()
-    '     deactivate Servicio
-    '     Pool -> Pool : publicarActualizacionSolicitudDeServicioPersonalizado()
-    '     activate Pool
-    '     Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
-    '     deactivate Pool
-    ' end
-
     ' == Eliminar Solicitud de Servicio Personalizado ==
     ' alt Eliminar Servicio Personalizado Solicitado
     '     Habitante -> Servicio : eliminarSolicitudDeServicioPersonalizado()

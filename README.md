@@ -1,7 +1,7 @@
 # docs-condominio
 
-## Casos de Uso
-### CU16: Gestionar Solicitud de Servicio Personalizado
+# Casos de Uso
+## CU16: Gestionar Solicitud de Servicio Personalizado
 
 **Tipo de Caso de uso:** Primario
 
@@ -19,23 +19,42 @@
 
 3. **Descripcion Incompleta:** Si el habitante no proporciona una descripción completa del servicio deseado, el sistema puede solicitar más detalles antes de permitir que continúe con la solicitud.
 
-#### Diagrama de Caso de Uso
+### Diagrama de Caso de Uso
 ![Use Case Diagram 16](./docs/out/usecases/CU16/UCD16/UCD16.png)
 
-#### Diagrama de Secuencia
+### Diagrama de Secuencia
 ![Secuence Diagram](./docs/out/usecases/CU16/SD16/SD16.png)
 
-#### Diagrama de Colaboracion
+### Diagrama de Colaboracion
 ![Colaboration Diagram](./docs/out/usecases/CU16/CD16/CD16.png)
 
-#### CO01: Modificar Servicio Personalizado
+### CO01: Modificar Servicio Personalizado
 - **Operacion:** modificarServicioPersonalizado()
 - **Referencia cruzadas:** CU Gestionar Solicitud de Servicio Personalizado
 - **Precondicion:** El habitante ya inicio sesion y tiene creado al menos un Servicio Personalizado en el Pool.
 - **Postcondicion:**   El sistema reflejara esta modificacion en el pool de servicio personalizado. 
-### 
+#### Diagrama de Secuencia
+![Secuence Diagram](./docs\out\usecases\CU16\CO01\SD\SD.png)
 
-### CU17: Gestionar Pool de Servicios Personalizados
+
+#### Diagrama de Colaboracion
+![Colaboration Diagram](./docs\out\usecases\CU16\CO01\CD\CD.png)
+
+
+### CO2: Eliminar Servicio Personalizado
+- **Operacion:** eliminarServicioPersonalizado()
+- **Referencia cruzadas:** CU Gestionar Solicitud de Servicio Personalizado
+- **Precondicion:** El usuario tiene al menos un servicio personalizado en el pool de servicios personalizado. 
+- **Postcondicion:**  El sistema retira el servicio personalizado creado.    
+
+#### Diagrama de Secuencia
+![Secuence Diagram](docs\out\usecases\CU16\CO02\SD\SD.png)
+
+
+#### Diagrama de Colaboracion
+![Colaboration Diagram](docs\out\usecases\CU16\CO02\CD\CD.png)
+
+## CU17: Gestionar Pool de Servicios Personalizados
 **Actores:** Proveedor (p), Habitante y Cohabitante (s), Administrador de Condominio (s).
 
 **Precondicion:** El proveedor ya ingreso sesion e ingreso al Pool de Servicios Personalizados
@@ -50,17 +69,17 @@
 3. **Eliminar respuesta:** El proveedor decide eliminar su respuesta y el sistema retira su respuesta, confirmando con una notificacion.
 4. **Modificar respuesta:** El proveedor decide modificar su respuesta y el sistema notifica de que se modifico exitosamente. 
 
-#### Diagrama de Caso de Uso
+### Diagrama de Caso de Uso
 ![Use Case Diagram](./docs/out/usecases/CU17/UCD17/UCD17.png)
 
-#### Diagrama de Secuencia
+### Diagrama de Secuencia
 ![Secuence Diagram](./docs/out/usecases/CU17/SD17/SD17.png)
 
-#### Diagrama de Colaboracion
+### Diagrama de Colaboracion
 ![Colaboration Diagram](./docs/out/usecases/CU17/CD.17/CD.17.png)
 
 
-### CU18: Gestionar Respuesta Solicitud de Servicio Personalizado
+## CU18: Gestionar Respuesta Solicitud de Servicio Personalizado
 **Actores:** Habitante (p), Administridor de Condominio (p), Proveedor (s)
 
 **Precondicion:** El habitante ha creado su solicitud de servicio personalizado y uno o varios proveedores de la comunidad han respondido a la solicitud.
@@ -75,20 +94,20 @@
 3. **Ver detalla de respuesta:** El solicitante puede ver mas detalla sobre la respuesta.
 
 
-#### Diagrama de Caso de Uso
+### Diagrama de Caso de Uso
 ![Use Case Diagram](./docs/out/usecases/CU18/UCD18/UCD18.png)
 
-#### Diagrama de Secuencia
+### Diagrama de Secuencia
 ![Secuence Diagram](./docs/out/usecases/CU18/SD18/SD18.png)
 
-#### Diagrama de Colaboracion
+### Diagrama de Colaboracion
 ![Colaboration Diagram](./docs/out/usecases/CU18/CD.18/CD.18.png)
 
-## Modelo de Dominio
+# Modelo de Dominio
 ![domain model](./docs/out/domain-model/domain-model/domain-model.png)
 
-## Diagrama de Clases de Diseño
+# Diagrama de Clases de Diseño
 
 ![Design Class](./docs/out/design-class/design-class/design-class.png)
 
-## Diagrama de Paquetes
+# Diagrama de Paquetes
