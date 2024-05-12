@@ -31,7 +31,7 @@
 ### CO01: Modificar Servicio Personalizado
 - **Operacion:** modificarServicioPersonalizado()
 - **Referencia cruzadas:** CU Gestionar Solicitud de Servicio Personalizado
-- **Precondicion:** El habitante ya inicio sesion y tiene creado al menos un Servicio Personalizado en el Pool.
+- **Precondicion:** El habitante ya inicio sesion y tiene creado al menos un Servicio Personalizado en el Pool que selecciono para modificar.
 - **Postcondicion:**   El sistema reflejara esta modificacion en el pool de servicio personalizado. 
 #### Diagrama de Secuencia
 ![Secuence Diagram](./docs\out\usecases\CU16\CO01\SD\SD.png)
@@ -44,7 +44,7 @@
 ### CO2: Eliminar Servicio Personalizado
 - **Operacion:** eliminarServicioPersonalizado()
 - **Referencia cruzadas:** CU Gestionar Solicitud de Servicio Personalizado
-- **Precondicion:** El usuario tiene al menos un servicio personalizado en el pool de servicios personalizado. 
+- **Precondicion:** El usuario tiene al menos un servicio personalizado en el pool de servicios personalizado que selecciono para eliminar.
 - **Postcondicion:**  El sistema retira el servicio personalizado creado.    
 
 #### Diagrama de Secuencia
