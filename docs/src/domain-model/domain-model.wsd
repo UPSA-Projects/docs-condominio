@@ -293,8 +293,12 @@ class "Categoria de Productos" {
 }
 
 ' E29
-class "Pool Servicio Personalizado" {
-  {field} Lista de Servicios Personalizados
+class "Pool Solicitud Servicio Personalizado" {
+  {field} Lista de Solicitud Servicios Personalizados
+}
+
+class "Pool Respuesta Servicio Personalizado" {
+  {field} Lista de Respuestas Servicios Personalizados
 }
 
 class "Pool Servicio Catalogo" {
@@ -313,17 +317,19 @@ Condominio ||--|| "Comunidad de proveedores" : "vincualdo a una" >
 
 
 ' COMUNIDAD DE PROVEEDRES Y POOLS
-"Comunidad de proveedores" ||--|| "Pool Servicio Personalizado" : "tiene un" >
+"Comunidad de proveedores" ||--|| "Pool Solicitud Servicio Personalizado" : "tiene un" >
 "Comunidad de proveedores" ||--|| "Pool Servicio Catalogo" : "tiene un" >
 "Comunidad de proveedores" ||--|| "Pool Producto" : "tiene un" >
 
 ' FLUJO DE SERVICIO PERSONALIZADO
 "Habitante y CoHabitante" ||--o{ "Solicitud de servicio personalizado" : "Solicita" >
 "Solicitud de servicio personalizado" ||--o{ "Categoria de Servicios" : "es de tipo" >
-"Solicitud de servicio personalizado" }o--|| "Pool Servicio Personalizado" : "Oferta" >
-"Respuesta de servicio personalizado" }o--|| "Habitante y CoHabitante" : Acepta <
-"Pool Servicio Personalizado" ||--o{ "Respuesta de servicio personalizado" : Responde >
+"Solicitud de servicio personalizado" }o--|| "Pool Solicitud Servicio Personalizado" : "Oferta" >
+"Respuesta de servicio personalizado" -- "Pool Respuesta Servicio Personalizado"
+"Pool Respuesta Servicio Personalizado" -- "Habitante y CoHabitante"
+"Pool Solicitud Servicio Personalizado" ||--o{ "Respuesta de servicio personalizado" : Responde >
 Proveedor ||--|{ "Categoria de Servicios" : "quiere ver" >
+
 
 ' FLUJO DE SOLICITUD DE PRODUCTO
 Proveedor ||--o{ Producto : Tiene >

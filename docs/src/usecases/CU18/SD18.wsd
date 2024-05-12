@@ -1,0 +1,40 @@
+@startuml
+
+title Gestionar Respuesta Solicitud de Servicio Personalizado
+
+actor "Habitante y Cohabitante" as Habitante
+
+participant ":RespeustaSolicitudDe\nServicioPersonalizdo\nControlador" as Controlador
+collections ":RespuestasDe\nServciosPersonalizado" as Respuesta
+collections ":PoolDeServicios\nPersonalizados" as Pool
+
+== Responder a respuesta de Servicio Personalizado ==
+
+alt status == "aceptar"
+    activate Habitante
+    Habitante -> Controlador : responderSolicitudPersonalizado(id, status)
+    deactivate Habitante
+    activate Controlador
+    Controlador -> Respuesta : modificarRespuestaSolicitudPersonalizado(id, status)
+    deactivate Controlador
+    activate Respuesta
+    Respuesta -> Respuesta : removerRespuestasSolicitudPersonalizado(id)
+    Respuesta --> Habitante : aceptacionExitosa()
+    activate Pool
+    Respuesta -> Pool : removerPoolServicioPersonalizadoSolicitado(id)
+    deactivate Pool
+    deactivate Respuesta
+
+else status == "Rechazado"
+    activate Habitante
+    Habitante -> Controlador : responderSolicitudPersonalizado(id, status)
+    deactivate Habitante
+    activate Controlador
+    Controlador -> Respuesta : modificarRespuestaSolicitudPersonalizado(id, status)
+    deactivate Controlador
+    activate Respuesta
+    Respuesta -> Respuesta : removerRespuestaSolicitudPersonalizado(id)
+    Respuesta --> Habitante : solicitudRemovida()
+    deactivate Respuesta
+end
+@enduml

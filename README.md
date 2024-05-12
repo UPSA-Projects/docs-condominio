@@ -27,7 +27,9 @@
 
 #### Diagrama de Colaboracion
 ![Colaboration Diagram](./docs/out/usecases/CU16/CD16/CD16.png)
-#### Interfaz
+
+#### CO01: Modificar Servicio Personalizado
+- Operacion: Intersepcion
 
 ### CU17: Gestionar Pool de Servicios Personalizados
 **Actores:** Proveedor (p), Habitante y Cohabitante (s), Administrador de Condominio (s).
@@ -44,6 +46,16 @@
 3. **Eliminar respuesta:** El proveedor decide eliminar su respuesta y el sistema retira su respuesta, confirmando con una notificacion.
 4. **Modificar respuesta:** El proveedor decide modificar su respuesta y el sistema notifica de que se modifico exitosamente. 
 
+#### Diagrama de Caso de Uso
+![Use Case Diagram](./docs/out/usecases/CU17/UCD17/UCD17.png)
+
+#### Diagrama de Secuencia
+![Secuence Diagram](./docs/out/usecases/CU17/SD17/SD17.png)
+
+#### Diagrama de Colaboracion
+![Colaboration Diagram](./docs/out/usecases/CU17/CD.17/CD.17.png)
+
+
 ### CU18: Gestionar Respuesta Solicitud de Servicio Personalizado
 **Actores:** Habitante (p), Administridor de Condominio (p), Proveedor (s)
 
@@ -51,11 +63,12 @@
 
 **Resumen:** El habitante o administrador del condominio accede a la lista de respuestas de sus solicitudes de servicio personalizado y evalúa cuál de ellas ofrece la mejor combinación entre calidad y precio. Pueden seleccionar entre descartar o aceptar una respuesta según sus preferencias.
 
-**Poscondicion:** El habitante acepto una respuesta y el proveedor es notificado al respecto para realizar el servicio personalizado. 
+**Poscondicion:** El habitante acepta y todas las respuestas son removidas exeptuando la aceptada, ademas de retirar la solicitud de pool de servicios personalizados. El proveedor que realizo la respuesta es notificado.
 
 **Caminos Alternativos:**
 1.  **Cancelar solicitud:** El solicitante decide cancelar el servicio. El sistema notifica al proveedor.
 2. **Respuesta inexistente:** La respuesta fue elimina. El sistema notifica al solicitante de ello. 
+3. **Ver detalla de respuesta:** El solicitante puede ver mas detalla sobre la respuesta.
 
 
 #### Diagrama de Caso de Uso

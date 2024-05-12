@@ -7,17 +7,24 @@ actor "Habitante y Cohabitante" as Habitante
 participant ":ServicioPersonalizado\nContronlador" as Controlador
 participant ":CategoriaDeServicios" as Categoria
 participant ":ServicioPersonalizado" as Servicio
-participant ":PoolDeServicio\nPersonalizado" as Pool
+collections ":PoolDeServicio\nPersonalizado" as Pool
 
 ' alt Flujos Basicos
 ' CREAR
     == Crear Solicitud de Servicio Personalizado ==
+    activate Habitante
     Habitante -> Controlador : solicitarServicioPersonalizado(ServicioPersonalizado)
+    deactivate Habitante
+    activate Controlador
     Controlador -> Categoria : obtenerCategoriaDeServicio(ServicioPersonalizado.idCategoria)
     Controlador -> Servicio : realizarSolicitudDeServicioPersonalizado(ServicioPersonalizado)
+    deactivate Controlador
+    activate Servicio
     Servicio -> Pool : crearSolicitudDeServicioPersonalizado(ServicioPersonalizado)
+    deactivate Servicio
+    activate Pool
     Pool --> Habitante : confirmarRecepcionDeSolicitudDeServicioPersonalizado()
-
+    deactivate Pool
     ' ' QUERY
     ' == Consultar Solicitud de Servicio Personalizado ==
     ' Habitante -> Servicio : consultarSolicitudesDeServicioPersonalizado()

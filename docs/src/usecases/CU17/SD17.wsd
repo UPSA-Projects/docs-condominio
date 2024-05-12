@@ -6,7 +6,7 @@ actor Proveedor
 
 participant ":PoolDeServicioPersonalizado\nControlador" as Controlador
 participant ":RespuestasDeServcioPersonalizado" as Respuesta
-participant ":PoolDeServicios\nPersonalizados" as Pool
+collections ":PoolDeServicios\nPersonalizados" as Pool
 
 
 == Crear Respuesta a Solicitud de Servicio Personalizado ==
