@@ -2,7 +2,7 @@
 left to right direction
 actor "Proveedor"
 
-rectangle "Gestionar Pool de Servicios Personalizados" {
+rectangle "Gestionar y Responder a Solicitudes de Servicio Personalizado" {
     usecase "Revisar Solicitudes de \nServicios Personalizados" as cu1
     usecase "Visualizar detalles de \nSolicitud de Servicio Personalizado" as cu2
     usecase "Crear respuesta a Solicitudes de \nServicios Personalizados" as cu3

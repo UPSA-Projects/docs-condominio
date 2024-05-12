@@ -5,7 +5,7 @@
 
 Flujo Servicio Personalizado
 - [CU16: Gestionar Solicitud de Servicio Personalizado](#cu16-gestionar-solicitud-de-servicio-personalizad)
-- [CU17: Gestionar Pool de Servicios Personalizados](#cu17-gestionar-pool-de-servicios-personalizados)
+- [CU17: Gestionar y Responder a Solicitudes de Servicio Personalizado](#cu17-gestionar-y-responder-a-solicitudes-de-servicio-personalizado)
 - [CU18: Gestionar Respuesta Solicitud de Servicio Personalizado](#cu18-gestionar-respuesta-solicitud-de-servicio-personalizado)
 
 Flujo Productos
@@ -71,14 +71,14 @@ Flujo Solicitud de Pertenencia
 #### Diagrama de Colaboracion
 ![Colaboration Diagram](docs\out\usecases\CU16\CO02\CD\CD.png)
 
-## CU17: Gestionar Pool de Servicios Personalizados
+## CU17: Gestionar y Responder a Solicitudes de Servicio Personalizado
 **Actores:** Proveedor (p), Habitante y Cohabitante (s), Administrador de Condominio (s).
 
 **Precondicion:** El proveedor ya ingreso sesion e ingreso al Pool de Servicios Personalizados
 
 **Resumen**: El proveedor revisa las solicitudes de servicio personalizado enviadas por usuarios asociados a condominios. El proveedor puede visualizar los detalles de cada servicio personalizado, incluyendo nombre, descripción, fecha de inicio, hora de inicio y fotos adjuntas. Posteriormente, el proveedor selecciona el servicio deseado y agrega un precio preferencial, para luego enviar la respuesta al solicitante.
 
-**Poscondicion:** El sistema envia una respuesta confirmando de que se envio correctamente.
+**Poscondicion:** El sistema envia una respuesta confirmando de que se envio correctamente y retira la solicitud del pool de servicio personalizado. 
 
 **Caminos Alternativos:**
 1.  **El servicio ya no esta:** El proveedor intenta responder a solucitud pero, el sistema envia notificacion de que el servicio personalizado fue eliminado o ya fue seleccionado por otro proveedor.

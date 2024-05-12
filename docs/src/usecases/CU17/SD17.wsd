@@ -1,12 +1,13 @@
 @startuml
 
-title Gestionar Pool de Servicios Personalizados
+title Gestionar y Responder a Solicitudes de Servicio Personalizado
 
 actor Proveedor
 
-participant ":PoolDeServicioPersonalizado\nControlador" as Controlador
+participant ":RespuestasDeServcioPersonalizado\nControlador" as Controlador
 participant ":RespuestasDeServcioPersonalizado" as Respuesta
-collections ":PoolDeServicios\nPersonalizados" as Pool
+collections ":PoolDeRespuestasDeServicios\nPersonalizados" as PoolRespuesta
+collections ":PoolDeServicios\nPersonalizados" as PoolServicio
 
 
 == Crear Respuesta a Solicitud de Servicio Personalizado ==
@@ -16,12 +17,14 @@ deactivate Proveedor
 activate Controlador
 Controlador -> Respuesta : crearRespuestaPersonalizado(id, price)
 activate Respuesta
-Respuesta --> Proveedor : RespuestaCreada()
-deactivate Respuesta
-Controlador -> Pool : retirarSolicitudPersonalizadoSelccionado(id)
 deactivate Controlador
-
-
-
+Respuesta -> PoolRespuesta : agregarRespuestaCreada(respuesta)
+activate PoolRespuesta
+PoolRespuesta --> Proveedor : RespuestaCreada()
+deactivate PoolRespuesta
+activate PoolServicio
+Respuesta -> PoolServicio : retirarSolicitudPersonalizadoSelccionado(id)
+deactivate Respuesta
+deactivate PoolServicio
 
 @enduml
