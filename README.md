@@ -148,7 +148,9 @@ Flujo Solicitud de Pertenencia
 ![Secuence Diagram](./docs/out/usecases/CU18/SD18/SD18.png)
 
 ### Diagrama de Colaboracion
-![Colaboration Diagram](./docs/out/usecases/CU18/CD.18/CD.18.png)
+![Colaboration Diagram](./docs/out/usecases/CU18/CD18-1/CD18-1.png)
+
+![Colaboration Diagram](./docs/out/usecases/CU18/CU18-2/CU18-2.png)
 
 # Modelo de Dominio
 ![domain model](./docs/out/domain-model/domain-model/domain-model.png)
