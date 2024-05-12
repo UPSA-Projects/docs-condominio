@@ -29,7 +29,11 @@
 ![Colaboration Diagram](./docs/out/usecases/CU16/CD16/CD16.png)
 
 #### CO01: Modificar Servicio Personalizado
-- Operacion: Intersepcion
+- **Operacion:** modificarServicioPersonalizado()
+- **Referencia cruzadas:** CU Gestionar Solicitud de Servicio Personalizado
+- **Precondicion:** El habitante ya inicio sesion y tiene creado al menos un Servicio Personalizado en el Pool.
+- **Postcondicion:**   El sistema reflejara esta modificacion en el pool de servicio personalizado. 
+### 
 
 ### CU17: Gestionar Pool de Servicios Personalizados
 **Actores:** Proveedor (p), Habitante y Cohabitante (s), Administrador de Condominio (s).
