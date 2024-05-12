@@ -51,11 +51,11 @@ Flujo Solicitud de Pertenencia
 - **Precondicion:** El habitante ya inicio sesion y tiene creado al menos un Servicio Personalizado en el Pool que selecciono para modificar.
 - **Postcondicion:**   El sistema reflejara esta modificacion en el pool de servicio personalizado. 
 #### Diagrama de Secuencia
-![Secuence Diagram](./docs\out\usecases\CU16\CO01\SD\SD.png)
+![Secuence Diagram](./docs/out/usecases/CU16/CO01/SD/SD.png)
 
 
 #### Diagrama de Colaboracion
-![Colaboration Diagram](./docs\out\usecases\CU16\CO01\CD\CD.png)
+![Colaboration Diagram](./docs/out/usecases/CU16/CO01/CD/CD.png)
 
 
 ### CO2: Eliminar Servicio Personalizado
