@@ -93,7 +93,7 @@ Flujo Solicitud de Pertenencia
 ![Secuence Diagram](./docs/out/usecases/CU17/SD17/SD17.png)
 
 ### Diagrama de Colaboracion
-![Colaboration Diagram](./docs/out/usecases/CU17/CD.17/CD.17.png)
+![Colaboration Diagram](./docs/out/usecases/CU17/CD17/CD17.png)
 
 
 ## CU18: Gestionar Respuesta Solicitud de Servicio Personalizado
