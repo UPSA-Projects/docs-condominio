@@ -3,6 +3,11 @@
 # Indice
 [Casos de Uso](#casos-de-uso)
 
+Flujo Servicio por Catalogo
+- [CU13: Seleccionar de servicio por catalogo]()
+- [CU14: Gestionar catalogo de servicio]()
+- [CU15: Gestionar respuesta del servicio por catálogo al solicitante]()
+
 Flujo Servicio Personalizado
 - [CU16: Gestionar Solicitud de Servicio Personalizado](#cu16-gestionar-solicitud-de-servicio-personalizado)
 - [CU17: Gestionar y Responder a Solicitudes de Servicio Personalizado](#cu17-gestionar-y-responder-a-solicitudes-de-servicio-personalizado)
@@ -10,14 +15,81 @@ Flujo Servicio Personalizado
 
 Flujo Productos
 
-Flujo Servicio por Catalogo
-
 Flujo Tarifa de Membresia
 
 Flujo Solicitud de Pertenencia
 
+Flujo de Perfiles
+
 
 # Casos de Uso
+
+## CU14: Gestionar Catalogo de Servicio
+
+**Tipo de Caso de uso:** Primario 
+
+**Actores:** Proveedor (primario), Habitante y CoHabitante (secundario)
+
+**Precondicion:** El proveedor ya se encuentra registrado y ya ingreso sesion. 
+
+**Resumen**: El proveedor crea su catálogo de servicios ingresando el nombre de cada servicio ofrecido, una descripción detallada, los precios y, opcionalmente, fotos si es necesario. Luego, procede a enviar el catálogo al pool de servicios correspondiente. Además, el proveedor tiene la capacidad de modificar, eliminar y listar todos sus servicios en el catálogo.
+
+**Poscondicion:** El servicio es posteado en el pool de servicios por catalogo y sistema envia notificacion de que se publico exitosamente.  
+
+**Caminos Alternativos:**
+1.  **Descripcion no valida:** La descripcion es muy corta o no hay, el sistema notifica el error. 
+2. **Precios no establecidos:** Los precios no fueron establecidos correctamente y sale mensaje de error. 
+3. **No hay nombre:** El proveedor no puso un nombre y el sistema notifiaca que necesita escribir un nombre. 
+
+### Diagrama de Caso de Uso
+![Use Case Diagram]()
+
+### Diagrama de Secuencia
+![Secuence Diagram]()
+
+### Diagrama de Colaboracion
+![Colaboration Diagram]()
+
+### CO01: Listar Servicios por Catalogo
+
+- **Operacion:** 
+- **Referencia cruzadas:** 
+- **Precondicion:** 
+- **Postcondicion:** 
+
+#### Diagrama de Secuencia
+![Secuence Diagram]()
+
+#### Diagrama de Colaboracion
+![Colaboration Diagram]()
+
+### CO02: Eliminar Servicio por Catalogo
+
+- **Operacion:** 
+- **Referencia cruzadas:** 
+- **Precondicion:** 
+- **Postcondicion:** 
+
+#### Diagrama de Secuencia
+![Secuence Diagram]()
+
+#### Diagrama de Colaboracion
+![Colaboration Diagram]()
+
+### CO03: Modificar Servicio por Catalogo
+
+- **Operacion:** 
+- **Referencia cruzadas:** 
+- **Precondicion:** 
+- **Postcondicion:** 
+
+#### Diagrama de Secuencia
+![Secuence Diagram]()
+
+#### Diagrama de Colaboracion
+![Colaboration Diagram]()
+
+
 ## CU16: Gestionar Solicitud de Servicio Personalizado
 
 **Tipo de Caso de uso:** Primario

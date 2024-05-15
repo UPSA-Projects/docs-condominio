@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor Proveedor as p
+
+rectangle "Gestionar Catalogo de Servicio" {
+    usecase "Crear su catálogo de servicios" as cu1
+    usecase "Modificar su catálogo de servicios" as cu2
+    usecase "Eliminar su catálogo de servicios" as cu3
+    usecase "Consultar su catálogo de servicios" as cu4
+    usecase "Listar todos sus servicios en el catálogo" as cu5
+}
+
+' Habitante --> cu1 : include
+
+p --> cu1 : <<include>>
+p --> cu2 : <<include>>
+p --> cu3 : <<include>>
+p --> cu4 : <<include>>
+p --> cu5 : <<include>>
+
+
+@enduml

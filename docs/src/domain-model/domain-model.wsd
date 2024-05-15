@@ -309,6 +309,11 @@ class "Pool Producto" {
   {field} Lista de Productos
 }
 
+class TipoDeCatalogo {
+  {field} Nombre
+  {field} Descripcion
+}
+
 ' RELACIONES
 
 ' FLUJO CONDOMINIO
@@ -345,6 +350,7 @@ Proveedor ||--o{ "Catalogo de servicios" : "crea" <
 "Solicitud de Servicio por Catalogo" }o--|| "Pool Servicio Catalogo" : "Oferta" >
 "Pool Servicio Catalogo" ||--o{ "Respuesta Solicitud de Servicio por Catalogo" : "Responde" >
 "Respuesta Solicitud de Servicio por Catalogo" }o--|| "Habitante y CoHabitante" : Acepta <
+TipoDeCatalogo ||--|| "Catalogo de servicios" : "es de tipo" >
 
 ' FLUJO DE SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
 "Administrador Comunidad de Proveedores" ||--|| "Comunidad de proveedores" : "administra" >
