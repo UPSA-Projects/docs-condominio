@@ -267,10 +267,9 @@ Producto }o--|| "Pool Producto" : Oferta >
 
 ' FLUJO DE SOLICITUD DE SERVICIO POR CATALOGO
 Proveedor ||--o{ "Catalogo de servicios" : "crea" <
-"Catalogo de servicios" ||--|{ "Pool Servicio Catalogo" : "Oferta" >
 "Habitante y CoHabitante" ||--o{ "Solicitud de Servicio por Catalogo" : "Solicita" >
-"Solicitud de Servicio por Catalogo" }o--|| "Pool Servicio Catalogo" : "Oferta" >
-"Pool Servicio Catalogo" ||--o{ "Respuesta Solicitud de Servicio por Catalogo" : "Responde" >
+"Solicitud de Servicio por Catalogo" }o--|| "Catalogo de servicios" : "Oferta" >
+"Catalogo de servicios" ||--o{ "Respuesta Solicitud de Servicio por Catalogo" : "Responde" >
 "Respuesta Solicitud de Servicio por Catalogo" }o--|| "Habitante y CoHabitante" : Acepta <
 TipoDeCatalogo ||--|| "Catalogo de servicios" : "es de tipo" >
 
