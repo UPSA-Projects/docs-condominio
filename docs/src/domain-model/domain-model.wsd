@@ -1,15 +1,4 @@
 @startuml
-' 1
-' class Administrador {
-  ' {field} CI
-  ' {field} Correo
-  ' {field} Nombre
-  ' {field} Apellido
-  ' {field} Telefono
-  ' {field} + Direccion
-  ' {field} + Fecha de Nacimiento
-  ' {field} + Fecha de Registro
-' }
 
 class "Administrador Comunidad de Proveedores" {
   {field} CI
@@ -159,21 +148,6 @@ class "Tipo de Pago" {
   {field} + Nombre de Administrador \nNombre de Proveedor
 }
 
-' 8
-' class "Reporte de Pago de Membresia" {
-'   {field} Número de Membresía
-'   {field} Nombre del dueño de la Membresía
-'   {field} - Fecha de pago
-'   {field} Monto pagado
-'   {field} Fecha de Reporte
-' }
-
-' note top of  "Reporte de Pago de Membresia" : Deberia de haber esta clase en MD
-
-' note right of  "Reporte de Pago de Membresia" ::"Fecha de pago"
-'   Deberia estar esta informacion en Tarifario
-' end note
-
 ' 11
 class "Solicitud Union a Comuniodad Proveedora" {
   {field} Nombre de la empresa proveedora
@@ -216,10 +190,6 @@ class "Respuesta de servicio personalizado" {
   {field} Estado
 }
 
-' 18
-' class "Reporte de evaluacion de desempeno por servicio"<administrador? Habitante> {
-
-' }
 ' 19
 class "Desvinculacion del sistama" {
   {field} Correo del Usuario
@@ -360,11 +330,6 @@ Proveedor }|--|| "Solicitud Union a Comuniodad Proveedora" : "Solicita" >
 "Administrador Comunidad de Proveedores" ||--o{ "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
 "Respuesta de pertenencia \ndel proveedor al condominio" |o--|| "Proveedor" : "Acepta" <
 Proveedor }o--o{ "Comunidad de proveedores" : "Pertenece" >
-
-' "Solicitud Union a Comuniodad Proveedora" -- "Comunidad de proveedores" : "Inspecciona" <
-' "Comunidad de proveedores" -- "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
-' "Respuesta de pertenencia \ndel proveedor al condominio" -- "Proveedor" : "Acepta" <
-' ' Proveedor -- "Comunidad de proveedores" : "Pertenece" >
 
 ' FLUJO DE TARIFA
 "Administrador de conodminio" ||--o{ "Tarifario de Membersia Condominio" : "paga" >
