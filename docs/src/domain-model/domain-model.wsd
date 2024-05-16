@@ -60,35 +60,27 @@ class "Habitante y CoHabitante" {
 
 ' 5
 class "Tarifario de Membersia Condominio" {
-  {field} Nombre del condominio que administra
-  {field} "Membresia escogida" : Object[]
-  {field} Tarifario para membresía (monto)
-  {field} Tipo de pago : Object[]
+  {field} Nombre del Administrador del Condominio
+  {field} Correo del Administrador del Condominio
+  {field} NIT del Administrador del Condominio
   {field} Monto de la membresía a pagar 
-  {field} + Fecha de Inicio
-  {field} + Fecha de Fin
-  {field} + Administrador de Condominios
+  {field} Fecha de Inicio
+  {field} Fecha de Fin
 }
 
 ' 6
-class "Tarifario de Membersia Empresa Proveeora y Proveedor" {
-  {field} Nombre de la empresa proveedora
-  {field} Tarifario para membresía (monto)
-  {field} Membresia escogida : Object[]
+class "Tarifario de Membersia Proveedor" {
+  {field} Nombre del proveedor
+  {field} Correo del Proveedor
+  {field} NIT del Proveedor
   {field} Monto de la membresía a pagar 
-  {field} + Fecha de Inicio
-  {field} + Nombre del proveedor
-  {field} + Fecha de Fin
-  {field} + Nombre del proveedor Proveedor
+  {field} Fecha de Inicio
+  {field} Fecha de Fin
 }
 
 ' 7
 class "Tipo de Pago" {
-  {field} - Tipo de pago : Object[]
-  {field} Correo Electronico
-  {field} Pais
-  {field} Ciudad
-  {field} + Nombre de Administrador \nNombre de Proveedor
+  Lista de tipos de pago
 }
 
 ' 11
@@ -253,9 +245,9 @@ Proveedor }o--o{ "Comunidad de proveedores" : "Pertenece" >
 
 ' FLUJO DE TARIFA
 "Administrador de conodminio" ||--o{ "Tarifario de Membersia Condominio" : "paga" >
-"Tarifario de Membersia Empresa Proveeora y Proveedor" ||--o{ "Proveedor" : "paga" >
+"Tarifario de Membersia Proveedor" ||--o{ "Proveedor" : "paga" >
 "Tipo de Pago" }|--|| "Tarifario de Membersia Condominio"
-"Tipo de Pago" }|--|| "Tarifario de Membersia Empresa Proveeora y Proveedor"
+"Tipo de Pago" }|--|| "Tarifario de Membersia Proveedor"
 "Tipo de Pago" ||--|| "Tarjeta de Credito"
 "Tipo de Pago" ||--|| QR
 ' "Reporte de Pago de Membresia"
