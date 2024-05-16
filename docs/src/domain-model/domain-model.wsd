@@ -96,23 +96,6 @@ class "Habitante y CoHabitante" {
   {field} Apellido (habitante)
   {field} Telefono (habitante)
   {field} Correo (habitante)
-
-  {field} CI (propietario)
-  {field} Nombre (propietario)
-  {field} Apellido (propietario)
-  {field} Telefono (propietario)
-  {field} Correo (propietario)
-
-  {field} CI (co-habitante)
-  {field} Nombre (co-habitante)
-  {field} Apellido (co-habitante)
-  {field} Telefono (co-habitante)
-  {field} Correo (co-habitante)
-
-  {field} Nombre de Condominio
-  {field} Numero de Casa / Departamento
-  {field} Numero Total de Personas
-  {field} Propio/Alquiler/Anticretico
 }
 
 ' 5
@@ -181,13 +164,11 @@ class "Solicitud de servicio personalizado" {
   {field} Fecha de inicio
   {field} Hora de Inicio
   {field} Fotos
-  {field} Estado
 }
 ' 16
 class "Respuesta de servicio personalizado" {
   {field} Fecha de respuesta
   {field} Precio
-  {field} Estado
 }
 
 ' 19
@@ -292,17 +273,15 @@ Condominio ||--|| "Comunidad de proveedores" : "vincualdo a una" >
 
 
 ' COMUNIDAD DE PROVEEDRES Y POOLS
-"Comunidad de proveedores" ||--|| "Pool Solicitud Servicio Personalizado" : "tiene un" >
+' "Comunidad de proveedores" ||--|| "Pool Solicitud Servicio Personalizado" : "tiene un" >
 "Comunidad de proveedores" ||--|| "Pool Servicio Catalogo" : "tiene un" >
 "Comunidad de proveedores" ||--|| "Pool Producto" : "tiene un" >
 
 ' FLUJO DE SERVICIO PERSONALIZADO
 "Habitante y CoHabitante" ||--o{ "Solicitud de servicio personalizado" : "Solicita" >
-"Solicitud de servicio personalizado" ||--o{ "Categoria de Servicios" : "es de tipo" >
-"Solicitud de servicio personalizado" }o--|| "Pool Solicitud Servicio Personalizado" : "Oferta" >
-"Respuesta de servicio personalizado" -- "Pool Respuesta Servicio Personalizado"
-"Pool Respuesta Servicio Personalizado" -- "Habitante y CoHabitante"
-"Pool Solicitud Servicio Personalizado" ||--o{ "Respuesta de servicio personalizado" : Responde >
+"Solicitud de servicio personalizado" }o--|| "Comunidad de proveedores" : "Oferta" >
+"Respuesta de servicio personalizado" -- "Habitante y CoHabitante"
+"Comunidad de proveedores" ||--o{ "Respuesta de servicio personalizado" : Responde >
 Proveedor ||--|{ "Categoria de Servicios" : "quiere ver" >
 
 
