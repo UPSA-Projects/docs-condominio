@@ -189,6 +189,7 @@ class "Lista de Producto" {
   {field} Fecha de Compra
   {field} Cantidad
   {field} Total
+  {field} Tipo de Pago
 }
 
 ' E25
@@ -217,22 +218,6 @@ class "Categoria de Productos" {
   {field} Descripcion
 }
 
-' E29
-class "Pool Solicitud Servicio Personalizado" {
-  {field} Lista de Solicitud Servicios Personalizados
-}
-
-class "Pool Respuesta Servicio Personalizado" {
-  {field} Lista de Respuestas Servicios Personalizados
-}
-
-class "Pool Servicio Catalogo" {
-  {field} Lista de Servicios por Catalogo
-}
-
-class "Pool Producto" {
-  {field} Lista de Productos
-}
 
 class TipoDeCatalogo {
   {field} Nombre
@@ -245,12 +230,6 @@ class TipoDeCatalogo {
 Condominio ||--o| "Administrador de conodminio" : "Administra" <
 Condominio ||--|| "Comunidad de proveedores" : "vincualdo a una" >
 
-
-' COMUNIDAD DE PROVEEDRES Y POOLS
-' "Comunidad de proveedores" ||--|| "Pool Solicitud Servicio Personalizado" : "tiene un" >
-"Comunidad de proveedores" ||--|| "Pool Servicio Catalogo" : "tiene un" >
-"Comunidad de proveedores" ||--|| "Pool Producto" : "tiene un" >
-
 ' FLUJO DE SERVICIO PERSONALIZADO
 "Habitante y CoHabitante" ||--o{ "Solicitud de servicio personalizado" : "Solicita" >
 "Solicitud de servicio personalizado" }o--|| "Comunidad de proveedores" : "Oferta" >
@@ -262,8 +241,8 @@ Proveedor ||--|{ "Categoria de Servicios" : "quiere ver" >
 ' FLUJO DE SOLICITUD DE PRODUCTO
 Proveedor ||--o{ Producto : Tiene >
 Producto ||--o{ "Categoria de Productos" : "es de tipo" >
-Producto }o--|| "Pool Producto" : Oferta >
-"Pool Producto" ||---|{ "Lista de Producto" : "Toma" <
+' Producto }o--|| "Comunidad de proveedores" : Oferta >
+Producto ||---|{ "Lista de Producto" : "Toma" <
 "Lista de Producto" |o--|| "Habitante y CoHabitante" : "crea" <
 
 ' FLUJO DE SOLICITUD DE SERVICIO POR CATALOGO
