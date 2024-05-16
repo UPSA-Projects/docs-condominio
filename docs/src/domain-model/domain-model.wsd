@@ -125,15 +125,6 @@ class "Respuesta de servicio personalizado" {
   {field} Precio
 }
 
-' 19
-class "Desvinculacion del sistama" {
-  {field} Correo del Usuario
-  {field} Nombre del Usuario
-  {field} Fecha de desvinculacion
-  {field} Motivo
-  {field} Confirmacion
-}
-
 ' 20
 class "Catalogo de servicios" {
   {field} Nombre 
@@ -250,12 +241,7 @@ Proveedor }o--o{ "Comunidad de proveedores" : "Pertenece" >
 "Tipo de Pago" }|--|| "Tarifario de Membersia Proveedor"
 "Tipo de Pago" ||--|| "Tarjeta de Credito"
 "Tipo de Pago" ||--|| QR
-' "Reporte de Pago de Membresia"
 
-' FLUJO DESVINCULACION DEL SISTEMA
-"Desvinculacion del sistama" ||--o{ "Administrador de conodminio" : "Desvincula" <
-"Desvinculacion del sistama" ||--o{ "Proveedor" : "Desvincula" <
-"Desvinculacion del sistama" ||--o{ "Habitante y CoHabitante" : "Desvincula" <
 
 @enduml
 
