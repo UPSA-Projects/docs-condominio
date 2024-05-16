@@ -1,18 +1,5 @@
 @startuml
 
-class "Administrador Comunidad de Proveedores" {
-  {field} CI
-  {field} Correo
-  {field} Nombre
-  {field} Apellido
-  {field} Telefono
-  {field} Nombre de la comunidad
-  {field} Nombre del Condominio
-  {field} + Direccion
-  {field} + Fecha de Nacimiento
-  {field} + Fecha de Registro
-}
-
 ' 9
 class "Administrador de conodminio" {
   {field} CI
@@ -106,18 +93,20 @@ class "Tipo de Pago" {
 
 ' 11
 class "Solicitud Union a Comuniodad Proveedora" {
-  {field} Nombre de la empresa proveedora
-  {field} Nombres de los servicios : Object[]
-  {field} Rango de precio de los servicios
-  {field} Descripción de los servicios
-  {field} - Actividades esperadas : Object[]
+  {field} Correo del administrador \nde condominio destinatario
+  {field} Correo de la empresa proveedora \norigen
+  {field} Fecha de solicitud
+  {field} Asunto
+  {field} Descripción
 }
 
 ' 12
-class "Respuesta de pertenencia \ndel proveedor al condominio"<administrador de condominio> {
-  {field} Nombre del proveedor
-  {field} Respuesta de pertenencia
+class "Respuesta de pertenencia \ndel proveedor al condominio" {
+  {field} Correo del proveedor destinatario
+  {field} Correo del administrador \nde condominio origen
   {field} Fecha y Hora de Respuesta
+  {field} Asunto
+  {field} Descripción
 }
 
 ' 13
@@ -254,11 +243,11 @@ Proveedor ||--o{ "Catalogo de servicios" : "crea" <
 TipoDeCatalogo ||--|| "Catalogo de servicios" : "es de tipo" >
 
 ' FLUJO DE SOLICITUD DE PERTENENCIA (PROVEEDORES|CONMINIO)
-"Administrador Comunidad de Proveedores" ||--|| "Comunidad de proveedores" : "administra" >
+' "Administrador de conodminio"
 Proveedor }|--o| "Empresa Proveedora" : "pertenece" > 
 Proveedor }|--|| "Solicitud Union a Comuniodad Proveedora" : "Solicita" >
-"Solicitud Union a Comuniodad Proveedora" }o--|| "Administrador Comunidad de Proveedores" : "Inspecciona" <
-"Administrador Comunidad de Proveedores" ||--o{ "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
+"Solicitud Union a Comuniodad Proveedora" }o--|| "Administrador de conodminio" : "Inspecciona" <
+"Administrador de conodminio" ||--o{ "Respuesta de pertenencia \ndel proveedor al condominio" : "Responde" >
 "Respuesta de pertenencia \ndel proveedor al condominio" |o--|| "Proveedor" : "Acepta" <
 Proveedor }o--o{ "Comunidad de proveedores" : "Pertenece" >
 
