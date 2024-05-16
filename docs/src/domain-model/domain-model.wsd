@@ -21,9 +21,9 @@ class "Administrador de conodminio" {
   {field} Apellido
   {field} Telefono
   {field} Nombre del condominio que administra
-  {field} + Direccion
-  {field} + Fecha de Nacimiento
-  {field} + Fecha de Registro
+  {field} Direccion
+  {field} Fecha de Nacimiento
+  {field} Fecha de Registro
 }
 
 ' 2
