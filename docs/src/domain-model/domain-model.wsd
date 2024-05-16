@@ -60,13 +60,7 @@ class Proveedor {
   {field} Nombre
   {field} Apellido
   {field} Telefono
-  {field} + Direccion
-  {field} + Fecha de Registro
-  {field} + Servicios : Object[]
-  {field} + Productos : Object[]
-  {field} + Tipo de Licencias : Object[]
-  {field} + Tipo de Certificados : Object[]
-  {field} Nombre de la empresa \nque representa : Object[]
+  {field} Direccion
   {field} Comentarios
   {field} Calificacion
 }
@@ -79,12 +73,6 @@ class "Empresa Proveedora" {
   {field} Direccion
   {field} Telefono
   {field} Fecha de Registro
-  {field} Tipo de Licencias : Object[]
-  {field} Tipo de Certificados : Object[]
-  {field} + Servicios : Object[]
-  {field} + Productos : Object[]
-  {field} + Proveedores : Object[]
-  {field} + Observaciones y comentarios adicionales
   {field} Comentarios
   {field} Calificacion
 }
