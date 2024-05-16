@@ -188,6 +188,7 @@ class Producto {
 class "Lista de Producto" {
   {field} Fecha de Compra
   {field} Cantidad
+  {field} Total
 }
 
 ' E25
