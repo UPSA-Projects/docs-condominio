@@ -20,7 +20,7 @@ class Condominio {
   {field} Cantidad de Casas (o departamentos)
   {field} Fecha de Registro
   {field} Descripcion
-  {field} Tamano
+  {field} Infraestructura detallada
   {field} Observaciones y comentarios adicionales
 }
 
