@@ -34,22 +34,7 @@ class Condominio {
   {field} Fecha de Registro
   {field} Descripcion
   {field} Tamano
-  {field} Servicios : Object[]
-  {field} Areas Comunes : Object[]
-  {field} Areas de Juegos infantiles : Object[]
-  {field} Areas de Servicio Social : Object[]
-  {field} Cantidad de Areas verdes : Object[]
-  {field} Cantidad de Areas de estacionamiento : Object[]
-  {field} Equipamento : Object[]
-  {field} Reglamento : Object[]
   {field} Observaciones y comentarios adicionales
-  {field} Pesonal de seguridad
-  {field} - Piscina
-  {field} - Cancha de futbol
-  {field} - Mantenimiento
-  {field} - Disponibilidad
-  {field} - Areas sociales
-  {field} - Disponibilidad
 }
 
 ' 3
