@@ -3,14 +3,11 @@
 ' 9
 class "Administrador de conodminio" {
   {field} CI
-  {field} Correo
   {field} Nombre
   {field} Apellido
   {field} Telefono
-  {field} Nombre del condominio que administra
   {field} Direccion
   {field} Fecha de Nacimiento
-  {field} Fecha de Registro
 }
 
 ' 2
@@ -18,23 +15,17 @@ class Condominio {
   {field} Nombre del Condominio
   {field} Ubicacion
   {field} Cantidad de Casas (o departamentos)
-  {field} Fecha de Registro
-  {field} Descripcion
-  {field} Infraestructura detallada
-  {field} Observaciones y comentarios adicionales
+  {field} Tamano
 }
 
 ' 3
 class Proveedor {
   {field} CI
   {field} NIT
-  {field} Correo
   {field} Nombre
   {field} Apellido
   {field} Telefono
   {field} Direccion
-  {field} Comentarios
-  {field} Calificacion
 }
 
 ' 4
@@ -44,7 +35,6 @@ class "Empresa Proveedora" {
   {field} Nombre de la empresa
   {field} Direccion
   {field} Telefono
-  {field} Fecha de Registro
   {field} Comentarios
   {field} Calificacion
 }
@@ -55,7 +45,6 @@ class "Habitante y CoHabitante" {
   {field} Nombre (habitante)
   {field} Apellido (habitante)
   {field} Telefono (habitante)
-  {field} Correo (habitante)
 }
 
 ' 5
@@ -131,10 +120,6 @@ class "Catalogo de servicios" {
   {field} Descripcion
   {field} Precio
   {field} Fotos
-  {field} Tiempo Estimado
-  {field} Calificacines
-  {field} Comentarios
-  {field} Caracterizticas Adicionales
 }
 
 ' E21
@@ -151,7 +136,6 @@ class Producto {
   {field} Stock 
   {field} Comentarios 
   {field} Fotos
-  {field} Calificaciones
   {field} Tiempo de entrega
   {field} Caracteristicas Adicionales
 }
