@@ -41,8 +41,14 @@ class EmpresaProveedora {
 class Producto {
   {field} Codigo de Barras 
   {field} Nombre 
-  {field} Descripcion 
+  {field} Descripcion
+  {field} Stock 
   {field} Precio
+}
+
+class DetalleDeProducto {
+  {field} Cantidad
+  {field} PrecioTotal
 }
 
 class CatalogoDeProducto {
@@ -119,6 +125,12 @@ EmpresaProveedora "0..*" -- "1..*" Servicio : ofrece
 Producto "0..1" -- "1..1" CatalogoDeProducto : es de tipo
 Servicio "0..1" -- "1..1" CatalogoDeServicios : es de tipo
 
+' Relacion de Pago de Producto
+Producto "0..*" -- "1..1" DetalleDeProducto : tiene
+Habitante "0..*" -- "0..*" DetalleDeProducto : compra
+DetalleDeProducto "0..*" -- "1" DetalleDePago : pagado con
+
+
 ' Pago de membrecia a proveedor y tipo de pag
 Proveedor "1" -- "1" Membresia : tiene 
 Membresia "1" -- "1" TipoDeMembresia : es_de 
@@ -131,7 +143,7 @@ DetalleDePago "1" -- "0..1" Nota : genera
 
 ' Evaluacion de Servicios y Productos
 Habitante "0..*" -- "0..*" Evaluacion : realiza
-AdministradorDeCondominio "0..*" -- "0..*" Evaluacion : realiza
+AdministradorDeConodminio "0..*" -- "0..*" Evaluacion : realiza
 Evaluacion "0..*" -- "1" Servicio : sobre
 Evaluacion "0..*" -- "1" Producto : sobre
 
