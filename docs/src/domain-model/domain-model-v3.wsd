@@ -20,55 +20,38 @@ class AdministradorDeConodminio {
 class Habitante {
 }
 
+
 class Condominio {
-  {field} Nombre
-  {field} Direccion
-  {field} Telefono
-  {field} Cantidad de Edificios
-  {field} Cantidad de Apartamentos
-  {field} Cantidad de Estacionamientos
+  {field} Nombre de Condominio
   {field} Tamano
 }
 
 class EmpresaProveedora {
-  {field} Nombre
-  {field} Direccion
-  {field} Telefono
-  {field} Cantidad de Servicios
+  {field} Nombre de Empresa Proveedora
 }
 
 ' Productos y Servicios
 class Producto {
   {field} Codigo de Barras 
-  {field} Nombre 
-  {field} Descripcion
-  {field} Stock 
-  {field} Precio
+  {field} Nombre de Producto
+  {field} Precio de Producto
 }
 
-class DetalleDeProducto {
+class LineaDeProducto {
   {field} Cantidad
 }
 
 class CatalogoDeProducto {
-  {field} Nombre
-  {field} Descripcion
+  {field} Tipo de Categoria
 }
 
 class Servicio {
-  {field} Nombre
-  {field} Descripcion
-  {field} Precio
+  {field} Nombre de Servicio
+  {field} Precio de Servicio
 }
 
 class CatalogoDeServicios {
-  {field} Nombre
-  {field} Descripcion
-}
-
-class Evaluacion {
-  {field} Calificacion
-  {field} Comentario
+  {field} Tipo de Servicio
 }
 
 ' Membrecia a proveedor
@@ -78,8 +61,7 @@ class Membresia {
 }
 
 class TipoDeMembresia {
-  {field} Nombre
-  {field} Descripcion
+  
 }
 
 
@@ -112,9 +94,9 @@ Producto "0..1" -- "1..1" CatalogoDeProducto : es de tipo
 Servicio "0..1" -- "1..1" CatalogoDeServicios : es de tipo
 
 ' Relacion de Pago de Producto
-Producto "0..*" -- "1..1" DetalleDeProducto : tiene
-Habitante "0..*" -- "0..*" DetalleDeProducto : compra
-DetalleDeProducto "0..*" -- "1" Transaccion : pagado con
+Producto "0..*" -- "1..1" LineaDeProducto : tiene
+Habitante "0..*" -- "0..*" LineaDeProducto : compra
+LineaDeProducto "0..*" -- "1" Transaccion : pagado con
 
 
 ' Pago de membrecia a proveedor y tipo de pag
@@ -128,11 +110,6 @@ Transaccion "1" -- "0..1" Recibo : genera
 Transaccion "1" -- "0..1" Factura : genera 
 Transaccion "1" -- "0..1" Nota : genera 
 
-' Evaluacion de Servicios y Productos
-Habitante "0..*" -- "0..*" Evaluacion : realiza
-AdministradorDeConodminio "0..*" -- "0..*" Evaluacion : realiza
-Evaluacion "0..*" -- "1" Servicio : sobre
-Evaluacion "0..*" -- "1" Producto : sobre
 
 
 @enduml
