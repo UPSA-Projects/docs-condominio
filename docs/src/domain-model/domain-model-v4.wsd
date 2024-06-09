@@ -1,0 +1,137 @@
+@startuml
+
+' Relacion entre Roles y Personas
+class Persona { 
+  {field} CI
+  {field} Nombre
+  {field} Apellido
+  {field} Telefono
+  {field} Direccion
+  {field} Fecha de Nacimiento
+}
+
+class Proveedor {
+    NIT
+}
+
+class AdministradorDeConodminio {}
+
+class Habitante {}
+
+class Externo {}
+
+class Condominio {
+  {field} Nombre de Condominio
+  {field} Tamano
+}
+
+class EmpresaProveedora {
+  {field} Nombre de Empresa Proveedora
+}
+
+' Productos y Servicios
+class Producto {
+  {field} Codigo de Barras 
+  {field} Nombre de Producto
+  {field} Precio de Producto
+}
+
+class LineaDeProducto {
+  {field} Cantidad
+}
+
+class CatalogoDeProducto {
+  {field} Tipo de Categoria
+}
+
+class Servicio {
+  {field} Nombre de Servicio
+  {field} Precio de Servicio
+}
+
+class CatalogoDeServicios {
+  {field} Tipo de Servicio
+}
+
+' Membrecia a proveedor
+class Membresia { 
+  {field} Periodo
+  {field} Monto
+}
+
+class TipoDeMembresia {
+  {field} Tipo de Membresia
+}
+
+
+class Pago {
+  {field} MontoTotal
+  {field} FechaDePago
+}
+
+class TipoDePago {
+  {field} Tipo de Pago
+}
+
+class QR {
+    {field} Codigo QR
+}
+class Tarjeta {
+    {field} Numero de Tarjeta
+    {field} Fecha de Vencimiento
+    {field} Codigo de Seguridad
+}
+
+class TransferenciaBancaria {
+    {field} Número de Cuenta Origen
+    {field} Número de Cuenta Destino
+}
+
+
+class TipoDeComprobanteDePago {
+  {field} Tipo de Comprobante
+}
+class Recibo {}
+class Factura {
+  {field} NIT
+}
+
+class Nota {}
+
+' Relacion entre Roles y Personas
+Persona <|-- Proveedor
+Persona <|-- AdministradorDeConodminio
+Persona <|-- Habitante
+Persona <|-- Externo
+Proveedor "0..*" -- "1..1" EmpresaProveedora : trabaja con
+AdministradorDeConodminio "0..1" -- "1..1" Condominio : administra
+Habitante "0..*" -- "1..1" Condominio : vive en
+
+' Relacion Productos y Servicios
+Proveedor "0..*" -- "1..*" Producto : vende
+Proveedor "0..*" -- "1..*" Servicio : ofrece
+Producto "0..1" -- "1..1" CatalogoDeProducto : es de tipo
+Servicio "0..1" -- "1..1" CatalogoDeServicios : es de tipo
+
+' Relacion de Venta de Producto
+Producto "0..*" -- "1..1" LineaDeProducto : tiene
+Habitante "0..*" -- "0..*" LineaDeProducto : compra
+
+' Pago de membrecia a proveedor y tipo de pag
+Proveedor "1" -- "1" Membresia : tiene 
+Membresia "1" -- "1" TipoDeMembresia : es_de 
+Membresia "1" -- "1" Pago : detalla 
+
+
+' Pagos
+Pago "1" -- "1" TipoDeComprobanteDePago : es_de
+TipoDeComprobanteDePago "1" -- "0..1" Recibo : genera 
+TipoDeComprobanteDePago "1" -- "0..1" Factura : genera 
+TipoDeComprobanteDePago "1" -- "0..1" Nota : genera 
+Pago "1" -- "1" TipoDePago : es_de
+TipoDePago "1" -- "0..1" QR : genera
+TipoDePago "1" -- "0..1" Tarjeta : genera
+TipoDePago "1" -- "0..1" TransferenciaBancaria : genera
+
+
+@enduml
